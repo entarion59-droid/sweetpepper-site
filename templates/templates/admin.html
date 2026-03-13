@@ -1,1 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Админ — Sweet Pepper</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #c0392b;
+  --dark: #0d0d0d;
+  --dark2: #161616;
+  --dark3: #1e1e1e;
+  --gold: #c9a84c;
+  --text: #e8e0d5;
+  --muted: #8a8078;
+  --border: rgba(255,255,255,0.07);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: var(--dark); color: var(--text); font-family: 'Raleway', sans-serif; }
+header {
+  background: var(--dark2);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+.header-actions { display: flex; gap: 0.75rem; }
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.btn-red { background: var(--red); color: white; border: none; }
+.btn-red:hover { background: #e74c3c; }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.btn-gold { background: var(--gold); color: #0d0d0d; border: none; font-weight: 600; }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--red); color: var(--red); }
 
+main { padding: 1.5rem; max-width: 900px; margin: 0 auto; }
+
+.tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0; overflow-x: auto; }
+.tab {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab.active { color: var(--text); border-bottom-color: var(--red); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* SETTINGS */
+.settings-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; }
+.field-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.field-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.field-input {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.field-input:focus { border-color: var(--red); }
+.save-msg { color: #2ecc71; font-size: 0.82rem; display: none; margin-top: 0.5rem; }
+
+/* MENU */
+.cat-select {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+.dish-row {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dish-row:hover { border-left-color: var(--red); background: var(--dark3); }
+.dish-row-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem; }
+.dish-row-name { font-size: 0.95rem; font-weight: 500; }
+.dish-row-price { color: var(--gold); font-size: 0.95rem; }
+.dish-row-meta { font-size: 0.75rem; color: var(--muted); }
+
+/* DISH EDITOR */
+.dish-editor {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+.dish-editor.open { display: block; }
+.editor-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem; color: var(--gold); }
+.editor-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+@media (max-width: 600px) { .editor-fields { grid-template-columns: 1fr; } }
+.editor-fields .full { grid-column: 1 / -1; }
+
+/* EVENTS */
+.add-event-form {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.add-event-form h3 { font-family: 'Playfair Display', serif; margin-bottom: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.full-row { margin-bottom: 0.75rem; }
+.photo-upload-area {
+  border: 2px dashed var(--border);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.photo-upload-area:hover { border-color: var(--red); }
+.photo-upload-area input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.photo-preview { max-width: 100%; max-height: 200px; margin-top: 1rem; display: none; }
+
+.event-item {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  align-items: flex-start;
+}
+.event-thumb {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.event-thumb-placeholder {
+  width: 80px;
+  height: 60px;
+  background: var(--dark3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.event-info { flex: 1; }
+.event-info-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.25rem; }
+.event-info-date { font-size: 0.75rem; color: var(--red); margin-bottom: 0.25rem; }
+.event-info-desc { font-size: 0.78rem; color: var(--muted); }
+.delete-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.delete-btn:hover { border-color: var(--red); color: var(--red); }
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #2ecc71;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  z-index: 999;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { background: var(--red); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">🌶 Sweet Pepper <span style="color:var(--muted);font-size:0.7rem;letter-spacing:0.15em;font-family:'Raleway',sans-serif;text-transform:uppercase;margin-left:0.5rem">Админ</span></div>
+  <div class="header-actions">
+    <a href="/" class="btn btn-outline" target="_blank">Сайт ↗</a>
+    <a href="/admin/logout" class="btn btn-ghost">Выйти</a>
+  </div>
+</header>
+
+<main>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('settings', this)">⚙️ Настройки</button>
+    <button class="tab" onclick="switchTab('menu', this)">🍽 Меню</button>
+    <button class="tab" onclick="switchTab('events', this)">🎉 Мероприятия</button>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div class="tab-content active" id="tab-settings">
+    <h2 class="section-title">Настройки заведения</h2>
+    <div class="settings-form">
+      <div class="field-group">
+        <div class="field-label">Адрес</div>
+        <input class="field-input" id="s-address" value="{{ info.address }}">
+      </div>
+      <div class="field-group">
+        <div class="field-label">Часы работы</div>
+        <input class="field-input" id="s-hours" value="{{ info.hours }}">
+      </div>
+      <div class="field-group">
+        <div class="field-label">Телефон</div>
+        <input class="field-input" id="s-phone" value="{{ info.phone or '' }}">
+      </div>
+      <div class="field-group">
+        <div class="field-label">Текст акции</div>
+        <input class="field-input" id="s-promo" value="{{ info.promo or '' }}">
+      </div>
+      <div class="field-group">
+        <div class="field-label">Telegram (ссылка на бот)</div>
+        <input class="field-input" id="s-telegram" value="{{ info.telegram or '' }}">
+      </div>
+      <div class="field-group">
+        <div class="field-label">ВКонтакте (ссылка)</div>
+        <input class="field-input" id="s-vk" value="{{ info.vk or '' }}">
+      </div>
+      <div class="field-group">
+        <div class="field-label">Instagram (ссылка)</div>
+        <input class="field-input" id="s-instagram" value="{{ info.instagram or '' }}">
+      </div>
+      <button class="btn btn-red" onclick="saveSettings()" style="margin-top:0.5rem">Сохранить</button>
+    </div>
+  </div>
+
+  <!-- MENU TAB -->
+  <div class="tab-content" id="tab-menu">
+    <h2 class="section-title">Редактирование меню</h2>
+    <select class="cat-select" id="catSelect" onchange="loadDishes()">
+      {% for cat in menu.keys() %}
+      <option value="{{ cat }}">{{ cat }}</option>
+      {% endfor %}
+    </select>
+    <div id="dishesList"></div>
+  </div>
+
+  <!-- EVENTS TAB -->
+  <div class="tab-content" id="tab-events">
+    <h2 class="section-title">Мероприятия</h2>
+    <div class="add-event-form">
+      <h3>➕ Добавить мероприятие</h3>
+      <div class="form-row">
+        <div class="field-group">
+          <div class="field-label">Название</div>
+          <input class="field-input" id="ev-title" placeholder="Джазовый вечер">
+        </div>
+        <div class="field-group">
+          <div class="field-label">Дата</div>
+          <input class="field-input" id="ev-date" placeholder="15 марта 2025">
+        </div>
+      </div>
+      <div class="full-row">
+        <div class="field-label" style="margin-bottom:0.4rem">Описание</div>
+        <input class="field-input" id="ev-desc" placeholder="Короткое описание мероприятия" style="width:100%">
+      </div>
+      <div class="full-row">
+        <div class="field-label" style="margin-bottom:0.4rem">Фото</div>
+        <div class="photo-upload-area" onclick="document.getElementById('ev-photo').click()">
+          <input type="file" id="ev-photo" accept="image/*" onchange="previewPhoto(this)" style="display:none">
+          <span id="uploadText">📸 Нажмите чтобы выбрать фото</span>
+          <img id="photoPreview" class="photo-preview">
+        </div>
+      </div>
+      <button class="btn btn-red" onclick="addEvent()" style="margin-top:0.75rem">Добавить мероприятие</button>
+    </div>
+
+    <h3 style="margin-bottom:1rem;font-family:'Playfair Display',serif">Список мероприятий</h3>
+    <div id="eventsList">
+      {% for event in events %}
+      <div class="event-item" id="ev-{{ event.id }}">
+        {% if event.photo %}
+        <img class="event-thumb" src="{{ event.photo }}" alt="">
+        {% else %}
+        <div class="event-thumb-placeholder">🎉</div>
+        {% endif %}
+        <div class="event-info">
+          {% if event.date %}<div class="event-info-date">{{ event.date }}</div>{% endif %}
+          <div class="event-info-title">{{ event.title }}</div>
+          {% if event.description %}<div class="event-info-desc">{{ event.description }}</div>{% endif %}
+        </div>
+        <button class="delete-btn" onclick="deleteEvent({{ event.id }})">✕</button>
+      </div>
+      {% else %}
+      <p style="color:var(--muted);font-size:0.85rem" id="no-events-msg">Мероприятий пока нет</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const MENU = {{ menu | tojson }};
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  if (name === 'menu') loadDishes();
+}
+
+function showToast(msg, error=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (error ? ' error' : '');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// SETTINGS
+async function saveSettings() {
+  const form = new FormData();
+  form.append('address', document.getElementById('s-address').value);
+  form.append('hours', document.getElementById('s-hours').value);
+  form.append('phone', document.getElementById('s-phone').value);
+  form.append('promo', document.getElementById('s-promo').value);
+  form.append('telegram', document.getElementById('s-telegram').value);
+  form.append('vk', document.getElementById('s-vk').value);
+  form.append('instagram', document.getElementById('s-instagram').value);
+  const r = await fetch('/admin/save_info', { method: 'POST', body: form });
+  if (r.ok) showToast('✅ Сохранено!');
+  else showToast('❌ Ошибка', true);
+}
+
+// MENU
+let openEditor = null;
+
+function loadDishes() {
+  const cat = document.getElementById('catSelect').value;
+  const dishes = MENU[cat] || [];
+  const list = document.getElementById('dishesList');
+  list.innerHTML = dishes.map((d, i) => `
+    <div class="dish-row" onclick="toggleEditor('${cat}', ${i})">
+      <div class="dish-row-top">
+        <div class="dish-row-name">${d.name}</div>
+        <div class="dish-row-price">${d.price} ₽</div>
+      </div>
+      <div class="dish-row-meta">${[d.weight, d.description].filter(Boolean).join(' · ')}</div>
+    </div>
+    <div class="dish-editor" id="editor-${i}">
+      <div class="editor-title">✏️ ${d.name}</div>
+      <div class="editor-fields">
+        <div class="field-group">
+          <div class="field-label">Название</div>
+          <input class="field-input" id="f-name-${i}" value="${d.name || ''}">
+        </div>
+        <div class="field-group">
+          <div class="field-label">Цена (₽)</div>
+          <input class="field-input" id="f-price-${i}" value="${d.price || ''}">
+        </div>
+        <div class="field-group">
+          <div class="field-label">Выход</div>
+          <input class="field-input" id="f-weight-${i}" value="${d.weight || ''}">
+        </div>
+        <div class="field-group full">
+          <div class="field-label">Описание</div>
+          <input class="field-input" id="f-desc-${i}" value="${d.description || ''}">
+        </div>
+        <div class="field-group full">
+          <div class="field-label">КБЖУ (например: 320 ккал | Б:15 Ж:10 У:35)</div>
+          <input class="field-input" id="f-kbju-${i}" value="${d.kbju || ''}">
+        </div>
+      </div>
+      <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+        <button class="btn btn-red" onclick="saveDish('${cat}', ${i})">Сохранить</button>
+        <button class="btn btn-outline" onclick="document.getElementById('editor-${i}').classList.remove('open')">Отмена</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleEditor(cat, idx) {
+  const ed = document.getElementById('editor-' + idx);
+  if (ed.classList.contains('open')) {
+    ed.classList.remove('open');
+  } else {
+    document.querySelectorAll('.dish-editor.open').forEach(e => e.classList.remove('open'));
+    ed.classList.add('open');
+    ed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+async function saveDish(cat, idx) {
+  const fields = ['name', 'price', 'weight', 'description', 'kbju'];
+  for (const field of fields) {
+    const val = document.getElementById(`f-${field}-${idx}`).value;
+    await fetch('/admin/update_dish', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ category: cat, idx, field, value: val })
+    });
+    MENU[cat][idx][field] = field === 'price' ? parseInt(val) : val;
+  }
+  showToast('✅ Блюдо сохранено!');
+  loadDishes();
+}
+
+// EVENTS
+function previewPhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = document.getElementById('photoPreview');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    document.getElementById('uploadText').textContent = '✅ ' + file.name;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function addEvent() {
+  const title = document.getElementById('ev-title').value.trim();
+  if (!title) { showToast('Введите название', true); return; }
+  const photoInput = document.getElementById('ev-photo');
+  let photoData = '';
+  if (photoInput.files[0]) {
+    photoData = await new Promise(res => {
+      const reader = new FileReader();
+      reader.onload = e => res(e.target.result);
+      reader.readAsDataURL(photoInput.files[0]);
+    });
+  }
+  const r = await fetch('/admin/add_event', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      title,
+      date: document.getElementById('ev-date').value,
+      description: document.getElementById('ev-desc').value,
+      photo: photoData,
+    })
+  });
+  const data = await r.json();
+  if (data.ok) {
+    showToast('✅ Мероприятие добавлено!');
+    document.getElementById('ev-title').value = '';
+    document.getElementById('ev-date').value = '';
+    document.getElementById('ev-desc').value = '';
+    document.getElementById('photoPreview').style.display = 'none';
+    document.getElementById('uploadText').textContent = '📸 Нажмите чтобы выбрать фото';
+    photoInput.value = '';
+    const noMsg = document.getElementById('no-events-msg');
+    if (noMsg) noMsg.remove();
+    const ev = data.event;
+    const html = `<div class="event-item" id="ev-${ev.id}">
+      ${ev.photo ? `<img class="event-thumb" src="${ev.photo}" alt="">` : '<div class="event-thumb-placeholder">🎉</div>'}
+      <div class="event-info">
+        ${ev.date ? `<div class="event-info-date">${ev.date}</div>` : ''}
+        <div class="event-info-title">${ev.title}</div>
+        ${ev.description ? `<div class="event-info-desc">${ev.description}</div>` : ''}
+      </div>
+      <button class="delete-btn" onclick="deleteEvent(${ev.id})">✕</button>
+    </div>`;
+    document.getElementById('eventsList').insertAdjacentHTML('afterbegin', html);
+  }
+}
+
+async function deleteEvent(id) {
+  if (!confirm('Удалить мероприятие?')) return;
+  const r = await fetch('/admin/delete_event/' + id, { method: 'POST' });
+  if ((await r.json()).ok) {
+    document.getElementById('ev-' + id).remove();
+    showToast('Удалено');
+  }
+}
+
+loadDishes();
+</script>
+</body>
+</html>
