@@ -18,14 +18,33 @@ ADMIN_PASSWORD = "pepper2025"
 #  HELPERS
 # ─────────────────────────────────────────────
 
+FALLBACK_MENU = {
+    "🍳 Завтраки": [{"name": "Овсянка с топпингом", "description": "280 г", "price": 205, "weight": "280 г", "kbju": "", "photo": ""}],
+    "🥗 Закуски и салаты": [{"name": "Камамбер фри", "description": "130 г, с ягодным соусом", "price": 335, "weight": "130 г", "kbju": "", "photo": ""}],
+    "🍲 Супы и горячее": [{"name": "Фирменный борщ", "description": "350 г, с говядиной", "price": 260, "weight": "350 г", "kbju": "", "photo": ""}],
+    "🍝 Пасты": [{"name": "Спагетти Карбонара", "description": "250 г, с беконом", "price": 365, "weight": "250 г", "kbju": "", "photo": ""}],
+    "🥐 Бейглы и сэндвичи": [{"name": "Цезарь-бейгл", "description": "240 г, с цыплёнком", "price": 325, "weight": "240 г", "kbju": "", "photo": ""}],
+    "🍰 Десерты": [{"name": "Чизкейк Сан Себастьян", "description": "", "price": 335, "weight": "", "kbju": "", "photo": ""}],
+    "☕ Кофе и чай": [{"name": "Капучино", "description": "150 мл", "price": 175, "weight": "150 мл", "kbju": "", "photo": ""}],
+    "🍹 Безалкогольные напитки": [{"name": "Лимонад домашний", "description": "300 мл", "price": 185, "weight": "300 мл", "kbju": "", "photo": ""}],
+    "🍸 Коктейли авторские": [{"name": "Эйприл", "description": "250 мл", "price": 355, "weight": "250 мл", "kbju": "", "photo": ""}],
+    "🍹 Коктейли классика": [{"name": "Пина Колада", "description": "300 мл, ром, ананас", "price": 425, "weight": "300 мл", "kbju": "", "photo": ""}],
+    "🥃 Виски": [{"name": "Jack Daniels", "description": "40 мл, американский", "price": 365, "weight": "40 мл", "kbju": "", "photo": ""}],
+    "🍷 Вино": [{"name": "Tarapaca Merlo", "description": "125 мл / 750 мл, Чили", "price": 315, "weight": "125 мл", "kbju": "", "photo": ""}],
+    "🍺 Пиво": [{"name": "Крушовице", "description": "450 мл, 4.8%", "price": 225, "weight": "450 мл", "kbju": "", "photo": ""}],
+    "🌶 Настойки Sweet Pepper": [{"name": "Солёная Карамель", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""}],
+}
+
 def load_menu():
     if os.path.exists(MENU_FILE):
         try:
             with open(MENU_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
+                data = json.load(f)
+                if data:
+                    return data
         except Exception:
             pass
-    return {}
+    return FALLBACK_MENU
 
 def load_cafe_info():
     defaults = {
