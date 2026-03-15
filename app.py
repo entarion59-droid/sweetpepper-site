@@ -13,6 +13,11 @@ MENU_FILE = "menu.json"
 CAFE_INFO_FILE = "cafe_info.json"
 EVENTS_FILE = "events.json"
 ADMIN_PASSWORD = "pepper2025"
+UPLOAD_FOLDER = os.path.join("static", "uploads")
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "gif"}
+
+# Создаём папку для загрузок если не существует
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # ─────────────────────────────────────────────
 #  HELPERS
@@ -34,6 +39,9 @@ FALLBACK_MENU = {
     "🍺 Пиво": [{"name": "Крушовице", "description": "450 мл, 4.8%", "price": 225, "weight": "450 мл", "kbju": "", "photo": ""}],
     "🌶 Настойки Sweet Pepper": [{"name": "Солёная Карамель", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""}],
 }
+
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def load_menu():
     if os.path.exists(MENU_FILE):
@@ -194,6 +202,58 @@ def admin_update_dish():
         with open(MENU_FILE, "w", encoding="utf-8") as f:
             json.dump(menu, f, ensure_ascii=False, indent=2)
     return jsonify({"ok": True})
+
+# ─────────────────────────────────────────────
+#  ЗАГРУЗКА ФОТО
+# ─────────────────────────────────────────────
+
+@app.route("/admin/upload_photo", methods=["POST"])
+@admin_required
+def upload_photo():
+    """Загружает фото и возвращает URL для сохранения в меню."""
+    if "file" not in request.files:
+        return jsonify({"ok": False, "error": "Файл не передан"}), 400
+
+    file = request.files["file"]
+
+    if file.filename == "":
+        return jsonify({"ok": False, "error": "Файл не выбран"}), 400
+
+    if not allowed_file(file.filename):
+        return jsonify({"ok": False, "error": "Недопустимый формат. Используй JPG, PNG, WEBP"}), 400
+
+    # Генерируем уникальное имя файла
+    ext = file.filename.rsplit(".", 1)[1].lower()
+    filename = f"{int(datetime.now().timestamp() * 1000)}.{ext}"
+    filepath = os.path.join(UPLOAD_FOLDER, filename)
+    file.save(filepath)
+
+    url = f"/static/uploads/{filename}"
+    return jsonify({"ok": True, "url": url})
+
+
+@app.route("/admin/delete_photo", methods=["POST"])
+@admin_required
+def delete_photo():
+    """Удаляет фото с диска и убирает его из блюда в меню."""
+    data = request.get_json()
+    category = data.get("category")
+    idx = data.get("idx")
+
+    menu = load_menu()
+    if category in menu and 0 <= idx < len(menu[category]):
+        old_photo = menu[category][idx].get("photo", "")
+        # Удаляем файл с диска если он локальный
+        if old_photo.startswith("/static/uploads/"):
+            file_path = old_photo.lstrip("/")
+            if os.path.exists(file_path):
+                os.remove(file_path)
+        menu[category][idx]["photo"] = ""
+        with open(MENU_FILE, "w", encoding="utf-8") as f:
+            json.dump(menu, f, ensure_ascii=False, indent=2)
+
+    return jsonify({"ok": True})
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
