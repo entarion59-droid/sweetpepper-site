@@ -255,6 +255,39 @@ def delete_photo():
     return jsonify({"ok": True})
 
 
+@app.route("/admin/add_dish", methods=["POST"])
+@admin_required
+def admin_add_dish():
+    data = request.get_json()
+    menu = load_menu()
+    category = data.get("category")
+    dish = data.get("dish")
+    if category in menu and dish:
+        menu[category].append(dish)
+        with open(MENU_FILE, "w", encoding="utf-8") as f:
+            json.dump(menu, f, ensure_ascii=False, indent=2)
+    return jsonify({"ok": True})
+
+
+@app.route("/admin/delete_dish", methods=["POST"])
+@admin_required
+def admin_delete_dish():
+    data = request.get_json()
+    menu = load_menu()
+    category = data.get("category")
+    idx = data.get("idx")
+    if category in menu and 0 <= idx < len(menu[category]):
+        old_photo = menu[category][idx].get("photo", "")
+        if old_photo.startswith("/static/uploads/"):
+            file_path = old_photo.lstrip("/")
+            if os.path.exists(file_path):
+                os.remove(file_path)
+        menu[category].pop(idx)
+        with open(MENU_FILE, "w", encoding="utf-8") as f:
+            json.dump(menu, f, ensure_ascii=False, indent=2)
+    return jsonify({"ok": True})
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
