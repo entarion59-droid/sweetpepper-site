@@ -134,7 +134,7 @@ def admin_login():
             session["admin"] = True
             return redirect(url_for("admin_panel"))
         error = "Неверный пароль"
-    return render_template("admin_login.html", error=error)
+    return render_template("login.html", error=error)
 
 @app.route("/admin/logout")
 def admin_logout():
