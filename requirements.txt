@@ -1,6 +1,6 @@
-pyTelegramBotAPI
 flask
-requests
 gunicorn
 cloudinary
-cloudinary
+psycopg2-binary
+requests
+pyTelegramBotAPI
