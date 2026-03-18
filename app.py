@@ -2,26 +2,63 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from functools import wraps
 import cloudinary
 import cloudinary.uploader
 
 app = Flask(__name__)
-app.secret_key = "sweetpepper_secret_2025"
+app.secret_key = os.environ.get("SECRET_KEY", "sweetpepper_secret_2025")
 
 MENU_FILE = "menu.json"
 CAFE_INFO_FILE = "cafe_info.json"
 EVENTS_FILE = "events.json"
-ADMIN_PASSWORD = "pepper2025"
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "pepper2025")
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "gif"}
 
-# Cloudinary config
+# Cloudinary config — берём из переменных окружения
 cloudinary.config(
-    cloud_name="dqxc3rfml",
-    api_key="735795974666715",
-    api_secret="CvGvLny8_D8HPdGTv2C1oZO28sU"
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME", "dqxc3rfml"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY", "735795974666715"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET", "CvGvLny8_D8HPdGTv2C1oZO28sU")
 )
+
+# ─────────────────────────────────────────────
+#  ЗАЩИТА ОТ БРУТФОРСА
+# ─────────────────────────────────────────────
+
+# Хранит: {ip: {"attempts": N, "blocked_until": datetime}}
+login_attempts = {}
+MAX_ATTEMPTS = 5        # максимум попыток
+BLOCK_MINUTES = 15      # блокировка на 15 минут
+
+def get_ip():
+    return request.headers.get("X-Forwarded-For", request.remote_addr)
+
+def is_blocked(ip):
+    if ip not in login_attempts:
+        return False
+    data = login_attempts[ip]
+    if data.get("blocked_until") and datetime.now() < data["blocked_until"]:
+        return True
+    if data.get("blocked_until") and datetime.now() >= data["blocked_until"]:
+        # Разблокируем
+        login_attempts.pop(ip, None)
+    return False
+
+def register_failed_attempt(ip):
+    if ip not in login_attempts:
+        login_attempts[ip] = {"attempts": 0, "blocked_until": None}
+    login_attempts[ip]["attempts"] += 1
+    if login_attempts[ip]["attempts"] >= MAX_ATTEMPTS:
+        login_attempts[ip]["blocked_until"] = datetime.now() + timedelta(minutes=BLOCK_MINUTES)
+
+def reset_attempts(ip):
+    login_attempts.pop(ip, None)
+
+# ─────────────────────────────────────────────
+#  HELPERS
+# ─────────────────────────────────────────────
 
 FALLBACK_MENU = {
     "🍳 Завтраки": [{"name": "Овсянка с топпингом", "description": "280 г", "price": 205, "weight": "280 г", "kbju": "", "photo": ""}],
@@ -99,12 +136,21 @@ def admin_required(f):
         return f(*args, **kwargs)
     return decorated
 
+# ─────────────────────────────────────────────
+#  PUBLIC ROUTES
+# ─────────────────────────────────────────────
+
 @app.route("/")
 def index():
     menu = load_menu()
     info = load_cafe_info()
     events = load_events()
     return render_template("index.html", menu=menu, info=info, events=events)
+
+@app.route("/lunch")
+def lunch():
+    info = load_cafe_info()
+    return render_template("lunch.html", info=info)
 
 @app.route("/api/menu")
 def api_menu():
@@ -118,14 +164,34 @@ def api_info():
 def api_events():
     return jsonify(load_events())
 
+# ─────────────────────────────────────────────
+#  ADMIN ROUTES
+# ─────────────────────────────────────────────
+
 @app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
+    ip = get_ip()
     error = None
+
+    if is_blocked(ip):
+        error = f"Слишком много попыток. Попробуйте через {BLOCK_MINUTES} минут."
+        return render_template("admin_login.html", error=error)
+
     if request.method == "POST":
         if request.form.get("password") == ADMIN_PASSWORD:
+            reset_attempts(ip)
             session["admin"] = True
+            session.permanent = True
+            app.permanent_session_lifetime = timedelta(hours=8)
             return redirect(url_for("admin_panel"))
-        error = "Неверный пароль"
+        else:
+            register_failed_attempt(ip)
+            attempts_left = MAX_ATTEMPTS - login_attempts.get(ip, {}).get("attempts", 0)
+            if attempts_left <= 0:
+                error = f"Аккаунт заблокирован на {BLOCK_MINUTES} минут."
+            else:
+                error = f"Неверный пароль. Осталось попыток: {attempts_left}"
+
     return render_template("admin_login.html", error=error)
 
 @app.route("/admin/logout")
@@ -194,6 +260,10 @@ def admin_update_dish():
         with open(MENU_FILE, "w", encoding="utf-8") as f:
             json.dump(menu, f, ensure_ascii=False, indent=2)
     return jsonify({"ok": True})
+
+# ─────────────────────────────────────────────
+#  ЗАГРУЗКА ФОТО (Cloudinary)
+# ─────────────────────────────────────────────
 
 @app.route("/admin/upload_photo", methods=["POST"])
 @admin_required
