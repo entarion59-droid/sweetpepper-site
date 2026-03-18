@@ -18,17 +18,10 @@
   --text: #1a1a1a;
   --text-muted: #7a7068;
   --border: rgba(0,0,0,0.08);
-  --green: #5a8a3c;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-}
-
+body { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; font-weight: 400; overflow-x: hidden; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
@@ -55,22 +48,9 @@ nav {
   gap: 0.5rem;
 }
 .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-.nav-links a {
-  color: rgba(247,244,240,0.7);
-  text-decoration: none;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-links a.active { color: var(--gold); }
-.nav-tg {
-  background: var(--red) !important;
-  color: white !important;
-  padding: 0.4rem 1rem;
-  border-radius: 2px;
-}
+.nav-links a { color: rgba(247,244,240,0.7); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-tg { background: var(--red) !important; color: white !important; padding: 0.4rem 1rem; border-radius: 2px; }
 
 /* HERO */
 .lunch-hero {
@@ -108,15 +88,7 @@ nav {
   position: relative;
 }
 .lunch-hero h1 span { color: var(--red-light); font-style: italic; }
-.lunch-time {
-  font-size: 1.1rem;
-  color: var(--gold);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-top: 1rem;
-  position: relative;
-}
+.lunch-time { font-size: 1.1rem; color: var(--gold); margin-top: 1rem; position: relative; }
 .lunch-time span {
   display: inline-block;
   background: rgba(201,168,76,0.15);
@@ -124,139 +96,138 @@ nav {
   padding: 0.5rem 1.5rem;
   border-radius: 100px;
   font-size: 0.9rem;
+  letter-spacing: 0.1em;
 }
 
-/* MAIN */
-.lunch-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-}
-
-/* НОВИНКА */
-.novelty-block {
-  background: var(--dark);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.novelty-block::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top right, rgba(192,57,43,0.15), transparent 60%);
-}
-.novelty-tag {
-  display: inline-block;
-  background: var(--red);
-  color: white;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 0.3rem 1rem;
-  border-radius: 100px;
-  margin-bottom: 1rem;
-  position: relative;
-}
-.novelty-block h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: #f7f4f0;
-  margin-bottom: 1.25rem;
-  position: relative;
-}
-.novelty-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  position: relative;
-}
-@media (max-width: 500px) { .novelty-items { grid-template-columns: 1fr; } }
-.novelty-item {
-  background: rgba(247,244,240,0.06);
-  border: 1px solid rgba(247,244,240,0.1);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
+/* CATEGORIES */
+.cats-scroll {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 2rem 2rem 0;
+  scrollbar-width: none;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.novelty-item-name { font-size: 0.95rem; color: #f7f4f0; font-weight: 500; }
-.novelty-item-price { color: var(--gold); font-weight: 700; font-size: 1rem; white-space: nowrap; }
+.cats-scroll::-webkit-scrollbar { display: none; }
+.cat-btn {
+  flex-shrink: 0;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.55rem 1.1rem;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.cat-btn:hover { border-color: var(--red); color: var(--red); }
+.cat-btn.active { background: var(--red); border-color: var(--red); color: white; box-shadow: 0 4px 12px rgba(192,57,43,0.25); }
 
-/* СЕКЦИИ */
-.lunch-section {
-  margin-bottom: 2.5rem;
-}
-.lunch-section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--dark);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--red);
-  display: inline-block;
-}
-
-/* СЕТКА КАРТОЧЕК */
-.lunch-grid {
+/* DISHES GRID */
+.dishes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.lunch-card {
+
+/* DISH CARD */
+.dish-card {
   background: var(--bg2);
   border-radius: 12px;
-  padding: 1.25rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   border: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
 }
-.lunch-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-}
-.lunch-card-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: var(--dark);
-  margin-bottom: 0.35rem;
-  line-height: 1.3;
-}
-.lunch-card-desc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 0.75rem;
-}
-.lunch-card-footer {
+.dish-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+.dish-photo { width: 100%; height: 200px; object-fit: cover; display: block; }
+.dish-photo-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, var(--bg3) 0%, #e8e0d5 100%);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  font-size: 3rem;
 }
-.lunch-card-price {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--red);
-}
-.veg-badge {
-  font-size: 0.7rem;
-  background: rgba(90,138,60,0.1);
-  color: var(--green);
-  border: 1px solid rgba(90,138,60,0.3);
-  padding: 0.2rem 0.5rem;
-  border-radius: 100px;
-}
+.dish-body { padding: 1.25rem; }
+.dish-name { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 0.35rem; line-height: 1.3; color: var(--dark); }
+.dish-desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.85rem; line-height: 1.5; }
+.dish-footer { display: flex; justify-content: space-between; align-items: center; }
+.dish-price { font-size: 1.15rem; font-weight: 700; color: var(--red); }
+.dish-weight { font-size: 0.72rem; color: var(--text-muted); background: var(--bg3); padding: 0.2rem 0.5rem; border-radius: 100px; }
 
-/* ИНФО БЛОК */
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,26,26,0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  backdrop-filter: blur(6px);
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal {
+  background: var(--bg2);
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-photo { width: 100%; height: 260px; object-fit: cover; display: block; border-radius: 16px 16px 0 0; }
+.modal-photo-placeholder {
+  width: 100%; height: 180px;
+  background: linear-gradient(135deg, var(--bg3) 0%, #e8e0d5 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; border-radius: 16px 16px 0 0;
+}
+.modal-body { padding: 1.75rem; }
+.modal-cat { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
+.modal-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem; line-height: 1.2; color: var(--dark); }
+.modal-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
+.modal-details { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+.modal-detail { background: var(--bg3); padding: 0.75rem 1rem; border-radius: 8px; }
+.modal-detail-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+.modal-detail-value { font-size: 0.95rem; font-weight: 500; }
+.modal-price-row { display: flex; align-items: center; justify-content: space-between; }
+.modal-price { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--red); font-weight: 700; }
+.modal-price span { font-size: 1rem; color: var(--text-muted); }
+.modal-close {
+  background: var(--bg3); border: none; color: var(--text-muted);
+  padding: 0.6rem 1.5rem; border-radius: 8px; cursor: pointer;
+  font-family: 'Raleway', sans-serif; font-size: 0.8rem;
+  letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s;
+}
+.modal-close:hover { background: var(--red); color: white; }
+
+/* INFO */
 .lunch-info {
   background: var(--bg3);
   border-radius: 12px;
   padding: 1.5rem;
-  margin-top: 2rem;
+  margin: 0 2rem 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -266,36 +237,25 @@ nav {
 }
 .lunch-info-icon { font-size: 1.5rem; flex-shrink: 0; }
 
-/* FOOTER */
-footer {
-  background: var(--dark);
-  padding: 2rem;
-  text-align: center;
-  color: #8a8078;
-  font-size: 0.78rem;
-}
+footer { background: var(--dark); padding: 2rem; text-align: center; color: #8a8078; font-size: 0.78rem; }
 footer a { color: var(--red); text-decoration: none; }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .lunch-main { padding: 2rem 1rem; }
-  .lunch-grid { grid-template-columns: 1fr; }
+  .dishes-grid { padding: 1.5rem 1rem; gap: 1rem; }
+  .cats-scroll { padding: 1.5rem 1rem 0; }
+  .modal-details { grid-template-columns: 1fr; }
+  .lunch-info { margin: 0 1rem 2rem; }
 }
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">
-    <img src="https://res.cloudinary.com/dqxc3rfml/image/upload/e_background_removal/sweetpepper/axsjgdemxd2x9kslmf1g.png" alt="Sweet Pepper" style="height:36px;width:36px;object-fit:contain;">
+    <img src="https://res.cloudinary.com/dqxc3rfml/image/upload/sweetpepper/axsjgdemxd2x9kslmf1g.png" alt="Sweet Pepper" style="height:36px;width:36px;object-fit:contain;">
     Sweet Pepper
   </a>
   <ul class="nav-links">
@@ -307,203 +267,111 @@ footer a { color: var(--red); text-decoration: none; }
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="lunch-hero">
   <div class="lunch-badge">🍽 Специальное предложение</div>
   <h1>Ланчи <span>по будням</span></h1>
-  <div class="lunch-time">
-    <span>⏰ с 12:00 до 16:00</span>
-  </div>
+  <div class="lunch-time"><span>⏰ с 12:00 до 16:00</span></div>
 </div>
 
-<div class="lunch-main">
-
-  <!-- НОВИНКА -->
-  <div class="novelty-block fade-in">
-    <div class="novelty-tag">✨ Новинка</div>
-    <h2>Весенние хиты</h2>
-    <div class="novelty-items">
-      <div class="novelty-item">
-        <div class="novelty-item-name">Буррито</div>
-        <div class="novelty-item-price">265 ₽</div>
-      </div>
-      <div class="novelty-item">
-        <div class="novelty-item-name">Ризотто с грибами</div>
-        <div class="novelty-item-price">285 ₽</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- САЛАТЫ -->
-  <div class="lunch-section fade-in">
-    <div class="lunch-section-title">Салаты</div>
-    <div class="lunch-grid">
-      <div class="lunch-card">
-        <div class="lunch-card-name">Кобб Салат</div>
-        <div class="lunch-card-desc">С куриной грудкой, беконом и фирменным соусом или с моцареллой, авокадо и брокколи</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">285 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Классический Цезарь</div>
-        <div class="lunch-card-desc">С цыплёнком, гренками, салатом айсберг и фирменным соусом</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">245 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Грузинский салат</div>
-        <div class="lunch-card-desc">С моцареллой и свежими овощами в сливочно-острой заправке с грецким орехом</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">255 ₽</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ЛАНЧ-ХИТЫ -->
-  <div class="lunch-section fade-in">
-    <div class="lunch-section-title">Ланч-хиты</div>
-    <div class="lunch-grid">
-      <div class="lunch-card">
-        <div class="lunch-card-name">Кесадилья</div>
-        <div class="lunch-card-desc">С цыплёнком и сыром или двойной сыр</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">265 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Фирменная Брокколи</div>
-        <div class="lunch-card-desc">В сухарях с пармезаном</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">190 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Цветная капуста с чили и мёдом</div>
-        <div class="lunch-card-desc"></div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">180 ₽</div>
-          <span class="veg-badge">🌿 Веджи</span>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Паста с курицей</div>
-        <div class="lunch-card-desc">Фарфалле с грибами в сливочном соусе</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">225 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Морковные оладьи</div>
-        <div class="lunch-card-desc">С карри и семечками</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">185 ₽</div>
-          <span class="veg-badge">🌿 Веджи</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- НА ПЕРВОЕ -->
-  <div class="lunch-section fade-in">
-    <div class="lunch-section-title">На первое</div>
-    <div class="lunch-grid">
-      <div class="lunch-card">
-        <div class="lunch-card-name">Борщ</div>
-        <div class="lunch-card-desc">Классика жанра с чесночным тостом и салом на гарнир</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">225 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Тыквенный суп</div>
-        <div class="lunch-card-desc">Сливочный с цыплёнком или Веджи</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">от 165 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Весенний супчик дня</div>
-        <div class="lunch-card-desc">250 г — Чорба, Сырный или Солянка</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">235 ₽</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- СЕНДВИЧ-СЕТЫ -->
-  <div class="lunch-section fade-in">
-    <div class="lunch-section-title">Сендвич-сеты</div>
-    <div class="lunch-grid">
-      <div class="lunch-card">
-        <div class="lunch-card-name">С цыплёнком</div>
-        <div class="lunch-card-desc">И картошкой фри</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">335 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">С индейкой</div>
-        <div class="lunch-card-desc">И картофельными дольками</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">345 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Бейгл с котлетой</div>
-        <div class="lunch-card-desc">И картошкой по-ярославски</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">355 ₽</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ДЕСЕРТЫ -->
-  <div class="lunch-section fade-in">
-    <div class="lunch-section-title">Десерты</div>
-    <div class="lunch-grid">
-      <div class="lunch-card">
-        <div class="lunch-card-name">Фирменный штрудель</div>
-        <div class="lunch-card-desc">Яблочный с орехами и грушами</div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">150 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Малиновый Наполеон</div>
-        <div class="lunch-card-desc"></div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">85 ₽</div>
-        </div>
-      </div>
-      <div class="lunch-card">
-        <div class="lunch-card-name">Ягодный Коржик</div>
-        <div class="lunch-card-desc"></div>
-        <div class="lunch-card-footer">
-          <div class="lunch-card-price">70 ₽</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ИНФО -->
-  <div class="lunch-info fade-in">
-    <div class="lunch-info-icon">ℹ️</div>
-    <div>Если у вас имеется аллергия или предпочтение в еде, пожалуйста, сообщите об этом нашему персоналу. Для уточнения наличия блюд и их состава обращайтесь к вашему официанту.</div>
-  </div>
-
+<div class="cats-scroll" id="catScroll">
+  {% for cat in lunch.keys() %}
+  <button class="cat-btn {% if loop.first %}active{% endif %}" onclick="showCat({{ loop.index }}, this)">{{ cat }}</button>
+  {% endfor %}
 </div>
 
-<!-- FOOTER -->
+{% for cat, dishes in lunch.items() %}
+<div class="dishes-grid cat-section" id="cat-{{ loop.index }}" style="{% if not loop.first %}display:none{% endif %}">
+  {% for dish in dishes %}
+  <div class="dish-card" onclick="openDish('{{ cat }}', {{ loop.index0 }})">
+    {% if dish.photo %}
+    <img class="dish-photo" src="{{ dish.photo }}" alt="{{ dish.name }}">
+    {% else %}
+    <div class="dish-photo-placeholder">🍽</div>
+    {% endif %}
+    <div class="dish-body">
+      <div class="dish-name">{{ dish.name }}</div>
+      {% if dish.description %}<div class="dish-desc">{{ dish.description }}</div>{% endif %}
+      <div class="dish-footer">
+        <div class="dish-price">{{ dish.price }} ₽</div>
+        {% if dish.weight %}<div class="dish-weight">{{ dish.weight }}</div>{% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+<div class="lunch-info fade-in" style="margin: 0 2rem 3rem; max-width: 1156px; margin-left: auto; margin-right: auto;">
+  <div class="lunch-info-icon">ℹ️</div>
+  <div>Если у вас имеется аллергия или предпочтение в еде, сообщите об этом нашему персоналу. Для уточнения наличия блюд обращайтесь к официанту.</div>
+</div>
+
 <footer>
   <p>© 2025 Sweet Pepper · <a href="/">На главную</a> · <a href="/admin">Панель управления</a></p>
 </footer>
 
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div id="modalPhotoWrap"></div>
+    <div class="modal-body">
+      <div class="modal-cat" id="modalCat"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-details" id="modalDetails"></div>
+      <div class="modal-price-row">
+        <div class="modal-price" id="modalPrice"></div>
+        <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('open')">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+const LUNCH = {{ lunch | tojson }};
+const catKeys = Object.keys(LUNCH);
+
+function showCat(idx, btn) {
+  document.querySelectorAll('.cat-section').forEach((el, i) => {
+    el.style.display = (i + 1 === idx) ? 'grid' : 'none';
+  });
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+function openDish(cat, idx) {
+  const dish = LUNCH[cat][idx];
+  const overlay = document.getElementById('modalOverlay');
+  const photoWrap = document.getElementById('modalPhotoWrap');
+  if (dish.photo) {
+    photoWrap.innerHTML = `<img class="modal-photo" src="${dish.photo}" alt="${dish.name}">`;
+  } else {
+    photoWrap.innerHTML = `<div class="modal-photo-placeholder">🍽</div>`;
+  }
+  document.getElementById('modalCat').textContent = cat;
+  document.getElementById('modalName').textContent = dish.name;
+  document.getElementById('modalDesc').textContent = dish.description || '';
+  let details = '';
+  if (dish.weight) details += `<div class="modal-detail"><div class="modal-detail-label">Выход</div><div class="modal-detail-value">${dish.weight}</div></div>`;
+  document.getElementById('modalDetails').innerHTML = details;
+  document.getElementById('modalDetails').style.display = dish.weight ? 'grid' : 'none';
+  document.getElementById('modalPrice').innerHTML = `${dish.price} <span>₽</span>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
