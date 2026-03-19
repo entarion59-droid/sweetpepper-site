@@ -95,6 +95,27 @@ def init_db():
         cur.execute("INSERT INTO settings (key, value) VALUES (%s, %s)",
                    ("cafe_info", json.dumps(info_data, ensure_ascii=False)))
 
+    # Таблица просмотров страниц
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS page_views (
+            id SERIAL PRIMARY KEY,
+            date DATE NOT NULL DEFAULT CURRENT_DATE,
+            count INTEGER NOT NULL DEFAULT 0,
+            UNIQUE(date)
+        )
+    """)
+
+    # Таблица просмотров блюд
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS dish_views (
+            id SERIAL PRIMARY KEY,
+            category TEXT NOT NULL,
+            dish_name TEXT NOT NULL,
+            count INTEGER NOT NULL DEFAULT 0,
+            UNIQUE(category, dish_name)
+        )
+    """)
+
     conn.commit()
     cur.close()
     conn.close()
@@ -115,6 +136,27 @@ def db_set(key, value):
         INSERT INTO settings (key, value) VALUES (%s, %s)
         ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
     """, (key, json.dumps(value, ensure_ascii=False)))
+    # Таблица просмотров страниц
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS page_views (
+            id SERIAL PRIMARY KEY,
+            date DATE NOT NULL DEFAULT CURRENT_DATE,
+            count INTEGER NOT NULL DEFAULT 0,
+            UNIQUE(date)
+        )
+    """)
+
+    # Таблица просмотров блюд
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS dish_views (
+            id SERIAL PRIMARY KEY,
+            category TEXT NOT NULL,
+            dish_name TEXT NOT NULL,
+            count INTEGER NOT NULL DEFAULT 0,
+            UNIQUE(category, dish_name)
+        )
+    """)
+
     conn.commit()
     cur.close()
     conn.close()
@@ -139,6 +181,85 @@ FALLBACK_MENU = {
     "🍺 Пиво": [{"name": "Крушовице", "description": "450 мл, 4.8%", "price": 225, "weight": "450 мл", "kbju": "", "photo": ""}],
     "🌶 Настойки Sweet Pepper": [{"name": "Солёная Карамель", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""}],
 }
+
+# ─────────────────────────────────────────────
+#  АНАЛИТИКА
+# ─────────────────────────────────────────────
+
+def track_page_view():
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO page_views (date, count) VALUES (CURRENT_DATE, 1)
+            ON CONFLICT (date) DO UPDATE SET count = page_views.count + 1
+        """)
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception:
+        pass
+
+def track_dish_view(category, dish_name):
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO dish_views (category, dish_name, count) VALUES (%s, %s, 1)
+            ON CONFLICT (category, dish_name) DO UPDATE SET count = dish_views.count + 1
+        """, (category, dish_name))
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception:
+        pass
+
+def get_analytics():
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+
+        # Посещаемость за последние 30 дней
+        cur.execute("""
+            SELECT date::text, count FROM page_views
+            WHERE date >= CURRENT_DATE - INTERVAL '30 days'
+            ORDER BY date
+        """)
+        views_by_day = [dict(r) for r in cur.fetchall()]
+
+        # Топ 10 блюд
+        cur.execute("""
+            SELECT category, dish_name, count FROM dish_views
+            ORDER BY count DESC LIMIT 10
+        """)
+        top_dishes = [dict(r) for r in cur.fetchall()]
+
+        # Итого за сегодня
+        cur.execute("SELECT count FROM page_views WHERE date = CURRENT_DATE")
+        row = cur.fetchone()
+        today = row["count"] if row else 0
+
+        # Итого за 7 дней
+        cur.execute("SELECT SUM(count) FROM page_views WHERE date >= CURRENT_DATE - INTERVAL '7 days'")
+        row = cur.fetchone()
+        week = row["sum"] if row and row["sum"] else 0
+
+        # Итого за 30 дней
+        cur.execute("SELECT SUM(count) FROM page_views WHERE date >= CURRENT_DATE - INTERVAL '30 days'")
+        row = cur.fetchone()
+        month = row["sum"] if row and row["sum"] else 0
+
+        cur.close()
+        conn.close()
+        return {
+            "views_by_day": views_by_day,
+            "top_dishes": top_dishes,
+            "today": today,
+            "week": week,
+            "month": month
+        }
+    except Exception as e:
+        return {"views_by_day": [], "top_dishes": [], "today": 0, "week": 0, "month": 0}
 
 # ─────────────────────────────────────────────
 #  HELPERS
@@ -241,6 +362,7 @@ except Exception as e:
 
 @app.route("/")
 def index():
+    track_page_view()
     menu = load_menu()
     info = load_cafe_info()
     events = load_events()
@@ -251,6 +373,12 @@ def lunch():
     info = load_cafe_info()
     lunch_data = load_lunch()
     return render_template("lunch.html", info=info, lunch=lunch_data)
+
+@app.route("/api/track_dish", methods=["POST"])
+def api_track_dish():
+    data = request.get_json()
+    track_dish_view(data.get("category", ""), data.get("dish_name", ""))
+    return jsonify({"ok": True})
 
 @app.route("/api/menu")
 def api_menu():
@@ -303,7 +431,8 @@ def admin_panel():
     info = load_cafe_info()
     events = load_events()
     lunch = load_lunch()
-    return render_template("admin.html", menu=menu, info=info, events=events, lunch=lunch)
+    analytics = get_analytics()
+    return render_template("admin.html", menu=menu, info=info, events=events, lunch=lunch, analytics=analytics)
 
 @app.route("/admin/save_info", methods=["POST"])
 @admin_required
@@ -498,6 +627,17 @@ def admin_delete_lunch_dish():
         lunch[category].pop(idx)
         save_lunch(lunch)
     return jsonify({"ok": True})
+
+@app.route("/admin/reload_menu", methods=["POST"])
+@admin_required
+def admin_reload_menu():
+    try:
+        with open("menu.json", "r", encoding="utf-8") as f:
+            menu_data = json.load(f)
+        db_set("menu", menu_data)
+        return jsonify({"ok": True, "message": "Меню обновлено!"})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
