@@ -319,6 +319,7 @@ main { padding: 1.5rem; max-width: 900px; margin: 0 auto; }
   <div class="tabs">
     <button class="tab active" onclick="switchTab('settings', this)">⚙️ Настройки</button>
     <button class="tab" onclick="switchTab('menu', this)">🍽 Меню</button>
+    <button class="tab" onclick="switchTab('analytics', this)">📊 Аналитика</button>
     <button class="tab" onclick="switchTab('lunch', this)">🍽 Ланчи</button>
     <button class="tab" onclick="switchTab('events', this)">🎉 Мероприятия</button>
   </div>
@@ -356,6 +357,13 @@ main { padding: 1.5rem; max-width: 900px; margin: 0 auto; }
         <input class="field-input" id="s-instagram" value="{{ info.instagram or '' }}">
       </div>
       <button class="btn btn-red" onclick="saveSettings()" style="margin-top:0.5rem">Сохранить</button>
+    </div>
+    <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)">
+      <h3 style="font-family:'Playfair Display',serif;margin-bottom:0.75rem;font-size:1.1rem">Обновление меню из файла</h3>
+      <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1rem">Нажми если загрузил новый menu.json на GitHub и хочешь обновить меню в базе данных.</p>
+      <button class="btn btn-gold" onclick="reloadMenu()">🔄 Загрузить меню из файла</button>
+    </div>
+    <div style="display:none">
     </div>
   </div>
 
@@ -403,6 +411,62 @@ main { padding: 1.5rem; max-width: 900px; margin: 0 auto; }
     </div>
 
     <div id="dishesList"></div>
+  </div>
+
+  <!-- ANALYTICS TAB -->
+  <div class="tab-content" id="tab-analytics">
+    <h2 class="section-title">Аналитика</h2>
+
+    <!-- STATS CARDS -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem">
+      <div style="background:var(--dark2);border:1px solid var(--border);padding:1.5rem;border-radius:4px;text-align:center">
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">Сегодня</div>
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold)">{{ analytics.today }}</div>
+        <div style="font-size:0.75rem;color:var(--muted)">визитов</div>
+      </div>
+      <div style="background:var(--dark2);border:1px solid var(--border);padding:1.5rem;border-radius:4px;text-align:center">
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">7 дней</div>
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold)">{{ analytics.week }}</div>
+        <div style="font-size:0.75rem;color:var(--muted)">визитов</div>
+      </div>
+      <div style="background:var(--dark2);border:1px solid var(--border);padding:1.5rem;border-radius:4px;text-align:center">
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">30 дней</div>
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold)">{{ analytics.month }}</div>
+        <div style="font-size:0.75rem;color:var(--muted)">визитов</div>
+      </div>
+    </div>
+
+    <!-- CHART -->
+    <div style="background:var(--dark2);border:1px solid var(--border);padding:1.5rem;margin-bottom:2rem;border-radius:4px">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.25rem">Посещаемость за 30 дней</div>
+      <canvas id="viewsChart" height="120"></canvas>
+    </div>
+
+    <!-- TOP DISHES -->
+    <div style="background:var(--dark2);border:1px solid var(--border);padding:1.5rem;border-radius:4px">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.25rem">🍽 Топ популярных блюд</div>
+      {% if analytics.top_dishes %}
+      <div id="topDishesChart"></div>
+      {% for dish in analytics.top_dishes %}
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
+        <div style="width:24px;height:24px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0">{{ loop.index }}</div>
+        <div style="flex:1">
+          <div style="font-size:0.88rem;font-weight:500;margin-bottom:0.2rem">{{ dish.dish_name }}</div>
+          <div style="font-size:0.72rem;color:var(--muted)">{{ dish.category }}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:0.95rem;font-weight:700;color:var(--gold)">{{ dish.count }}</div>
+          <div style="font-size:0.7rem;color:var(--muted)">открытий</div>
+        </div>
+        <div style="width:80px;height:6px;background:var(--dark3);border-radius:3px;overflow:hidden">
+          <div style="height:100%;background:var(--red);border-radius:3px;width:{{ [(dish.count / analytics.top_dishes[0].count * 100)|int, 100]|min }}%"></div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p style="color:var(--muted);font-size:0.85rem">Пока нет данных. Данные появятся когда посетители начнут открывать блюда.</p>
+      {% endif %}
+    </div>
   </div>
 
   <!-- LUNCH TAB -->
@@ -507,6 +571,18 @@ function showToast(msg, error=false) {
 }
 
 // ─── SETTINGS ───────────────────────────────
+async function reloadMenu() {
+  if (!confirm('Загрузить меню из menu.json? Текущие данные в базе будут заменены!')) return;
+  const r = await fetch('/admin/reload_menu', { method: 'POST' });
+  const data = await r.json();
+  if (data.ok) {
+    showToast('✅ Меню обновлено! Обновите страницу.');
+    setTimeout(() => location.reload(), 2000);
+  } else {
+    showToast('❌ Ошибка: ' + data.error, true);
+  }
+}
+
 async function saveSettings() {
   const form = new FormData();
   form.append('address', document.getElementById('s-address').value);
@@ -811,6 +887,45 @@ async function deleteEvent(id) {
 }
 
 loadDishes();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+// График посещаемости
+const analyticsData = {{ analytics | tojson }};
+
+if (document.getElementById('viewsChart') && analyticsData.views_by_day.length > 0) {
+  const labels = analyticsData.views_by_day.map(d => {
+    const date = new Date(d.date);
+    return date.toLocaleDateString('ru-RU', {day:'numeric', month:'short'});
+  });
+  const data = analyticsData.views_by_day.map(d => d.count);
+
+  new Chart(document.getElementById('viewsChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Визиты',
+        data,
+        borderColor: '#c0392b',
+        backgroundColor: 'rgba(192,57,43,0.1)',
+        borderWidth: 2,
+        pointBackgroundColor: '#c0392b',
+        pointRadius: 3,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#8a8078', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#8a8078', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' }, beginAtZero: true }
+      }
+    }
+  });
+}
 </script>
 </body>
 </html>
