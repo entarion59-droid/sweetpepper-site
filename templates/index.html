@@ -779,15 +779,13 @@ function showCat(idx, btn) {
 }
 
 function openDish(cat, idx) {
-  // Трекинг просмотра блюда
   const dish = MENU[cat][idx];
+  // Трекинг просмотра блюда
   fetch('/api/track_dish', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({category: cat, dish_name: dish.name})
   }).catch(() => {});
-
-  const dish = MENU[cat][idx];
   const overlay = document.getElementById('modalOverlay');
   const photoWrap = document.getElementById('modalPhotoWrap');
 
