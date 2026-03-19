@@ -1,1292 +1,285 @@
 {
   "🍳 Завтраки": [
-    {
-      "name": "Овсянка с топпингом",
-      "description": "280 г",
-      "price": 205,
-      "weight": "280 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Овсянка с фруктами",
-      "description": "320 г",
-      "price": 265,
-      "weight": "320 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Сырники фри (2 шт)",
-      "description": "145 г, с топпингом или вареньем",
-      "price": 265,
-      "weight": "145 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Сырники фри (3 шт)",
-      "description": "210 г, с топпингом или вареньем",
-      "price": 345,
-      "weight": "210 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Блины с вареньем",
-      "description": "150 г",
-      "price": 170,
-      "weight": "150 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Блины с творогом",
-      "description": "180 г",
-      "price": 195,
-      "weight": "180 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Блины с клубникой",
-      "description": "180 г, со сливочным сыром",
-      "price": 275,
-      "weight": "180 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Блины с лососем",
-      "description": "180 г, со сливочным сыром",
-      "price": 425,
-      "weight": "180 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Утренний ролл с беконом",
-      "description": "280 г, с омлетом, томатом",
-      "price": 305,
-      "weight": "280 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Утренний ролл с цыплёнком",
-      "description": "280 г, с омлетом, томатом",
-      "price": 325,
-      "weight": "280 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Утренний бейгл с яйцом",
-      "description": "220 г",
-      "price": 325,
-      "weight": "220 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Завтрак от Перцев",
-      "description": "280 г, глазунья с овощами и котлетой",
-      "price": 345,
-      "weight": "280 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Глазунья с томатами",
-      "description": "180 г",
-      "price": 245,
-      "weight": "180 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Глазунья с беконом (2 яйца)",
-      "description": "190 г",
-      "price": 295,
-      "weight": "190 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Омлет с сыром и грибами",
-      "description": "230 г",
-      "price": 315,
-      "weight": "230 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Омлет с лососем",
-      "description": "250 г",
-      "price": 425,
-      "weight": "250 г",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Овсянка с топпингом", "description": "280 г", "price": 205, "weight": "280 г", "kbju": "", "photo": ""},
+    {"name": "Овсянка с фруктами", "description": "320 г", "price": 265, "weight": "320 г", "kbju": "", "photo": ""},
+    {"name": "Сырники фри (2 шт)", "description": "145 г, с топпингом или вареньем", "price": 265, "weight": "145 г", "kbju": "", "photo": ""},
+    {"name": "Сырники фри (3 шт)", "description": "210 г, с топпингом или вареньем", "price": 345, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Блины с вареньем", "description": "150 г", "price": 170, "weight": "150 г", "kbju": "", "photo": ""},
+    {"name": "Блины с творогом (2 шт)", "description": "180 г, с вареньем", "price": 195, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Блины с творогом (3 шт)", "description": "270 г, с вареньем", "price": 285, "weight": "270 г", "kbju": "", "photo": ""},
+    {"name": "Блины с клубникой (2 шт)", "description": "180 г, со сливочным сыром", "price": 275, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Блины с клубникой (3 шт)", "description": "270 г, со сливочным сыром", "price": 335, "weight": "270 г", "kbju": "", "photo": ""},
+    {"name": "Блины с лососем", "description": "180 г, со сливочным сыром", "price": 425, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Утренний ролл с беконом", "description": "280 г, с омлетом, томатом", "price": 305, "weight": "280 г", "kbju": "", "photo": ""},
+    {"name": "Утренний ролл с цыплёнком", "description": "280 г, с омлетом, томатом", "price": 325, "weight": "280 г", "kbju": "", "photo": ""},
+    {"name": "Утренний ролл с индейкой", "description": "280 г, с омлетом, томатом", "price": 345, "weight": "280 г", "kbju": "", "photo": ""},
+    {"name": "Утренний ролл с креветками", "description": "280 г, с омлетом, томатом", "price": 425, "weight": "280 г", "kbju": "", "photo": ""},
+    {"name": "Утренний бейгл с яйцом", "description": "220 г", "price": 325, "weight": "220 г", "kbju": "", "photo": ""},
+    {"name": "Завтрак от Перцев", "description": "280 г, глазунья с овощами, тостами и котлетой", "price": 345, "weight": "280 г", "kbju": "", "photo": ""},
+    {"name": "Глазунья с томатами", "description": "180 г, с зеленью", "price": 245, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Глазунья с беконом (2 яйца)", "description": "190 г", "price": 295, "weight": "190 г", "kbju": "", "photo": ""},
+    {"name": "Глазунья с беконом (3 яйца)", "description": "250 г", "price": 355, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Омлет с сыром и грибами", "description": "230 г", "price": 315, "weight": "230 г", "kbju": "", "photo": ""},
+    {"name": "Омлет с лососем", "description": "250 г", "price": 425, "weight": "250 г", "kbju": "", "photo": ""}
   ],
   "🥗 Закуски и салаты": [
-    {
-      "name": "Камамбер фри",
-      "description": "130 г, с ягодным соусом",
-      "price": 335,
-      "weight": "130 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Луковые кольца",
-      "description": "180 г",
-      "price": 325,
-      "weight": "180 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Бородинские гренки",
-      "description": "150 г",
-      "price": 180,
-      "weight": "150 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Кесадилья с цыплёнком и сыром",
-      "description": "130 г",
-      "price": 295,
-      "weight": "130 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Цветная капуста с чили и мёдом",
-      "description": "250 г",
-      "price": 245,
-      "weight": "250 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Крылышки-гриль (5 шт)",
-      "description": "270 г, в медовой глазури",
-      "price": 455,
-      "weight": "270 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Мясной сет 2025",
-      "description": "540 г",
-      "price": 595,
-      "weight": "540 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Кобб-салат с цыплёнком",
-      "description": "270 г",
-      "price": 355,
-      "weight": "270 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Сицилийский салат",
-      "description": "210 г, с цыплёнком и апельсинами",
-      "price": 335,
-      "weight": "210 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Цезарь с курицей",
-      "description": "210 г",
-      "price": 325,
-      "weight": "210 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Цезарь с креветками",
-      "description": "210 г",
-      "price": 475,
-      "weight": "210 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Грузинский салат",
-      "description": "250 г, с моцареллой",
-      "price": 265,
-      "weight": "250 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Тёплый паста-салат",
-      "description": "250 г, с фарфалле и ветчиной",
-      "price": 315,
-      "weight": "250 г",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Камамбер фри", "description": "130 г, с ягодным соусом", "price": 335, "weight": "130 г", "kbju": "", "photo": ""},
+    {"name": "Луковые кольца", "description": "180 г", "price": 325, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Бородинские гренки", "description": "150 г", "price": 180, "weight": "150 г", "kbju": "", "photo": ""},
+    {"name": "Кесадилья с цыплёнком и сыром", "description": "130 г", "price": 295, "weight": "130 г", "kbju": "", "photo": ""},
+    {"name": "Цветная капуста с чили и мёдом", "description": "250 г", "price": 245, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Брокколи в сухарях", "description": "200 г, с сыром или соусом песто", "price": 255, "weight": "200 г", "kbju": "", "photo": ""},
+    {"name": "Крылышки-гриль (5 шт)", "description": "270 г, в медовой глазури", "price": 455, "weight": "270 г", "kbju": "", "photo": ""},
+    {"name": "Крылышки-гриль (10 шт)", "description": "540 г, в медовой глазури", "price": 645, "weight": "540 г", "kbju": "", "photo": ""},
+    {"name": "Мясной сет 2025", "description": "540 г", "price": 595, "weight": "540 г", "kbju": "", "photo": ""},
+    {"name": "Фирменные драники классические", "description": "250 г", "price": 225, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Фирменные драники с беконом", "description": "250 г, с томатами", "price": 315, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Фирменные драники с лососем", "description": "250 г", "price": 395, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Картофель", "description": "150 г, фри или дольки", "price": 185, "weight": "150 г", "kbju": "", "photo": ""},
+    {"name": "Peppers Special с цыплёнком", "description": "210 г", "price": 305, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Peppers Special с индейкой", "description": "210 г", "price": 325, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Peppers Special с лососем", "description": "210 г", "price": 385, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Сэндвич-сет", "description": "290 г, с цыплёнком и фри или с индейкой и дольками", "price": 435, "weight": "290 г", "kbju": "", "photo": ""},
+    {"name": "Кобб-салат с цыплёнком", "description": "270 г", "price": 355, "weight": "270 г", "kbju": "", "photo": ""},
+    {"name": "Сицилийский салат", "description": "210 г, с цыплёнком и апельсинами, рукколой", "price": 335, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Цезарь с курицей", "description": "210 г", "price": 325, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Цезарь с креветками", "description": "210 г", "price": 475, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Цезарь с лососем", "description": "210 г", "price": 445, "weight": "210 г", "kbju": "", "photo": ""},
+    {"name": "Грузинский салат", "description": "250 г, с моцареллой и свежими овощами", "price": 265, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Тёплый паста-салат", "description": "250 г, с фарфалле, ветчиной и шампиньонами", "price": 315, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Соусы", "description": "50 г, сырный, цезарь, барбекю, тартар, сметана, сицилийский, горчица", "price": 65, "weight": "50 г", "kbju": "", "photo": ""}
   ],
   "🍲 Супы и горячее": [
-    {
-      "name": "Лёгкий куриный бульон",
-      "description": "300 г, с яйцом",
-      "price": 185,
-      "weight": "300 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Фирменный борщ",
-      "description": "350 г, с говядиной",
-      "price": 260,
-      "weight": "350 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Тыквенный суп сливочный",
-      "description": "220 г, с цыплёнком",
-      "price": 255,
-      "weight": "220 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Грибная кружка на сливках",
-      "description": "220 г",
-      "price": 295,
-      "weight": "220 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Жаркое по-ярославски",
-      "description": "300 г, свинина в остром сливочном соусе",
-      "price": 365,
-      "weight": "300 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Жаркое с треской",
-      "description": "300 г, в сливочно-устричном соусе",
-      "price": 365,
-      "weight": "300 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Пельмешки запечённые с сыром",
-      "description": "180 г",
-      "price": 305,
-      "weight": "180 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Запечённая треска",
-      "description": "350 г, с вялеными томатами",
-      "price": 555,
-      "weight": "350 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Стейк из цыплёнка",
-      "description": "350 г, с картофельным пюре",
-      "price": 435,
-      "weight": "350 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Стейк из индейки",
-      "description": "320 г, с картофельными дольками",
-      "price": 585,
-      "weight": "320 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Стейк из свинины",
-      "description": "450 г, с картофелем по-деревенски",
-      "price": 695,
-      "weight": "450 г",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Лёгкий куриный бульон", "description": "300 г, с яйцом", "price": 185, "weight": "300 г", "kbju": "", "photo": ""},
+    {"name": "Фирменный борщ", "description": "350 г, с говядиной и гренками с салом", "price": 260, "weight": "350 г", "kbju": "", "photo": ""},
+    {"name": "Тыквенный суп сливочный", "description": "220 г, с цыплёнком и песто", "price": 255, "weight": "220 г", "kbju": "", "photo": ""},
+    {"name": "Тыквенный суп веджи", "description": "180 г", "price": 215, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Грибная кружка на сливках", "description": "220 г", "price": 295, "weight": "220 г", "kbju": "", "photo": ""},
+    {"name": "Грибная кружка веджи", "description": "190 г", "price": 255, "weight": "190 г", "kbju": "", "photo": ""},
+    {"name": "Жаркое по-ярославски", "description": "300 г, свинина в остром сливочном соусе", "price": 365, "weight": "300 г", "kbju": "", "photo": ""},
+    {"name": "Жаркое с треской", "description": "300 г, в сливочно-устричном соусе", "price": 365, "weight": "300 г", "kbju": "", "photo": ""},
+    {"name": "Пельмешки запечённые с сыром", "description": "180 г", "price": 305, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Пельмешки с бульоном", "description": "180 г", "price": 305, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Запечённая треска", "description": "350 г, с вялеными томатами, пармезаном и цукини", "price": 555, "weight": "350 г", "kbju": "", "photo": ""},
+    {"name": "Стейк из цыплёнка", "description": "350 г, с картофельным пюре и сицилийским соусом", "price": 435, "weight": "350 г", "kbju": "", "photo": ""},
+    {"name": "Стейк из индейки", "description": "320 г, с картофельными дольками, морковью и тыквой", "price": 585, "weight": "320 г", "kbju": "", "photo": ""},
+    {"name": "Стейк из свинины", "description": "450 г, с картофелем по-деревенски", "price": 695, "weight": "450 г", "kbju": "", "photo": ""}
   ],
   "🍝 Пасты": [
-    {
-      "name": "Спагетти Карбонара",
-      "description": "250 г, с беконом",
-      "price": 365,
-      "weight": "250 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Фарфалле с курицей и грибами",
-      "description": "300 г",
-      "price": 345,
-      "weight": "300 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Неаполитана с фрикадельками",
-      "description": "300 г, в томатном соусе",
-      "price": 395,
-      "weight": "300 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Неаполитана с креветками",
-      "description": "300 г",
-      "price": 445,
-      "weight": "300 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Ризотто с грибами",
-      "description": "250 г, с цыплёнком",
-      "price": 355,
-      "weight": "250 г",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Спагетти Карбонара", "description": "250 г, с беконом в сливочном соусе", "price": 365, "weight": "250 г", "kbju": "", "photo": ""},
+    {"name": "Фарфалле с курицей и грибами", "description": "300 г, с брокколи в сливочном соусе", "price": 345, "weight": "300 г", "kbju": "", "photo": ""},
+    {"name": "Неаполитана с фрикадельками", "description": "300 г, спагетти в итальянском томатном соусе", "price": 395, "weight": "300 г", "kbju": "", "photo": ""},
+    {"name": "Неаполитана с креветками", "description": "300 г", "price": 445, "weight": "300 г", "kbju": "", "photo": ""},
+    {"name": "Неаполитана с индейкой", "description": "300 г", "price": 385, "weight": "300 г", "kbju": "", "photo": ""},
+    {"name": "Ризотто с грибами", "description": "250 г, с цыплёнком и шампиньонами в сливочно-грибном соусе", "price": 355, "weight": "250 г", "kbju": "", "photo": ""}
   ],
   "🥐 Бейглы и сэндвичи": [
-    {
-      "name": "Цезарь-бейгл",
-      "description": "240 г, с цыплёнком",
-      "price": 325,
-      "weight": "240 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Pepper-бейгл",
-      "description": "240 г, с говядиной",
-      "price": 335,
-      "weight": "240 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Fish-бейгл",
-      "description": "240 г, с лососем",
-      "price": 395,
-      "weight": "240 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Chiken-бейгл",
-      "description": "240 г, с цыплёнком барбекю",
-      "price": 325,
-      "weight": "240 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Клаб-сэндвич с цыплёнком",
-      "description": "280 г",
-      "price": 345,
-      "weight": "280 г",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Клаб-сэндвич с говядиной",
-      "description": "280 г",
-      "price": 365,
-      "weight": "280 г",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Цезарь-бейгл", "description": "240 г, с цыплёнком, пармезаном и томатом", "price": 325, "weight": "240 г", "kbju": "", "photo": ""},
+    {"name": "Pepper-бейгл", "description": "240 г, с пряной говядиной, гаудой и томатом", "price": 335, "weight": "240 г", "kbju": "", "photo": ""},
+    {"name": "Fish-бейгл", "description": "240 г, с лососем, сливочным сыром, огурцом, каперсами", "price": 395, "weight": "240 г", "kbju": "", "photo": ""},
+    {"name": "Утренний бейгл с яйцом", "description": "240 г, с беконом, глазуньей и томатом", "price": 325, "weight": "240 г", "kbju": "", "photo": ""},
+    {"name": "Бейгл-сет с котлетой", "description": "350 г, с сочной котлетой, солёными огурцами, томатами и картофельными дольками", "price": 435, "weight": "350 г", "kbju": "", "photo": ""},
+    {"name": "Клаб-сэндвич с цыплёнком", "description": "280 г", "price": 345, "weight": "280 г", "kbju": "", "photo": ""},
+    {"name": "Клаб-сэндвич с говядиной", "description": "280 г", "price": 365, "weight": "280 г", "kbju": "", "photo": ""}
   ],
   "🍰 Десерты": [
-    {
-      "name": "Фирменный яблочный штрудель",
-      "description": "со сливочным мороженым",
-      "price": 255,
-      "weight": "",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Малиновый Наполеон",
-      "description": "",
-      "price": 215,
-      "weight": "",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Чизкейк Сан Себастьян",
-      "description": "",
-      "price": 335,
-      "weight": "",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Черничный чизкейк",
-      "description": "",
-      "price": 215,
-      "weight": "",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Панна-котта",
-      "description": "",
-      "price": 245,
-      "weight": "",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Мороженое",
-      "description": "",
-      "price": 95,
-      "weight": "",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Фирменный яблочный штрудель", "description": "180 г, со сливочным пломбиром", "price": 255, "weight": "180 г", "kbju": "", "photo": ""},
+    {"name": "Малиновый Наполеон", "description": "150 г, с джемом и миндалём", "price": 215, "weight": "150 г", "kbju": "", "photo": ""},
+    {"name": "Чизкейк Сан Себастьян", "description": "240 г, сливочный с запечённой корочкой", "price": 335, "weight": "240 г", "kbju": "", "photo": ""},
+    {"name": "Черничный чизкейк", "description": "175 г, с натуральными ягодами без выпечки", "price": 215, "weight": "175 г", "kbju": "", "photo": ""},
+    {"name": "Панна-котта", "description": "200 г, с абрикосом, сливками, сахаром и ванилью", "price": 245, "weight": "200 г", "kbju": "", "photo": ""},
+    {"name": "Мороженое", "description": "50 г, сливочное, шоколадное или фисташковое", "price": 95, "weight": "50 г", "kbju": "", "photo": ""}
   ],
   "☕ Кофе и чай": [
-    {
-      "name": "Эспрессо",
-      "description": "30 мл",
-      "price": 105,
-      "weight": "30 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Американо",
-      "description": "150 мл",
-      "price": 125,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Капучино",
-      "description": "150 мл",
-      "price": 175,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Латте",
-      "description": "250 мл",
-      "price": 195,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Флэт Уайт",
-      "description": "150 мл",
-      "price": 185,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Раф кофе",
-      "description": "200 мл",
-      "price": 235,
-      "weight": "200 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Матча Латте",
-      "description": "250 мл",
-      "price": 235,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Чай (чайник)",
-      "description": "400 мл",
-      "price": 185,
-      "weight": "400 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Облепиховый чай",
-      "description": "400 мл",
-      "price": 225,
-      "weight": "400 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Эспрессо", "description": "30 мл", "price": 130, "weight": "30 мл", "kbju": "", "photo": ""},
+    {"name": "Двойной Эспрессо", "description": "60 мл", "price": 180, "weight": "60 мл", "kbju": "", "photo": ""},
+    {"name": "Американо", "description": "200 мл", "price": 130, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Американо XXL", "description": "300 мл", "price": 170, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Капучино", "description": "200 мл, или холодная версия", "price": 165, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Капучино XXL", "description": "300 мл", "price": 245, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Латте", "description": "300 мл", "price": 190, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Флэт Уайт", "description": "200 мл", "price": 195, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Пряный Раф", "description": "250 мл", "price": 205, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Bumble Fresh", "description": "250 мл, апельсиновый фреш, эспрессо, карамельный топпинг", "price": 235, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Эспрессо-Тоник", "description": "250 мл", "price": 170, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Speciality Арабика", "description": "200 мл, на фильтре", "price": 130, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Раф Пикник", "description": "200 мл", "price": 205, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Матча Латте", "description": "250 мл", "price": 235, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Какао", "description": "200 мл, с маршмеллоу", "price": 295, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Горячий шоколад", "description": "120 мл", "price": 295, "weight": "120 мл", "kbju": "", "photo": ""},
+    {"name": "Фирменный чай Клюквенный", "description": "600 мл, с имбирём", "price": 290, "weight": "600 мл", "kbju": "", "photo": ""},
+    {"name": "Фирменный чай Малиновый", "description": "600 мл, с анисом", "price": 290, "weight": "600 мл", "kbju": "", "photo": ""},
+    {"name": "Фирменный чай Облепиховый", "description": "600 мл, с апельсином", "price": 290, "weight": "600 мл", "kbju": "", "photo": ""},
+    {"name": "Фирменный чай Тропический", "description": "600 мл, с киви и базиликом", "price": 290, "weight": "600 мл", "kbju": "", "photo": ""},
+    {"name": "Чай чёрный", "description": "600 мл, Ассам, Эрл Грей, Дикая Вишня или Таёжный сбор", "price": 180, "weight": "600 мл", "kbju": "", "photo": ""},
+    {"name": "Чай зелёный", "description": "600 мл, с манго, жасмин, Молочный Улун или Порох", "price": 180, "weight": "600 мл", "kbju": "", "photo": ""},
+    {"name": "Пуэр", "description": "600 мл, 3 года выдержки", "price": 180, "weight": "600 мл", "kbju": "", "photo": ""},
+    {"name": "НЕчай", "description": "600 мл, Клубника и сливки, Ройбуш с фруктами, Гречишный или Иван-Чай", "price": 180, "weight": "600 мл", "kbju": "", "photo": ""}
   ],
   "🍹 Безалкогольные напитки": [
-    {
-      "name": "Морс клюквенный",
-      "description": "300 мл",
-      "price": 145,
-      "weight": "300 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Лимонад домашний",
-      "description": "300 мл",
-      "price": 185,
-      "weight": "300 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Свежевыжатый сок",
-      "description": "200 мл",
-      "price": 225,
-      "weight": "200 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Coca-Cola / Fanta / Sprite",
-      "description": "330 мл",
-      "price": 145,
-      "weight": "330 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Вода минеральная",
-      "description": "500 мл",
-      "price": 95,
-      "weight": "500 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Смузи Ягодный Взрыв", "description": "250 мл, клюква, чёрная смородина, мёд, морс", "price": 245, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Смузи Завтрак Робинзона", "description": "250 мл, банан, ананас, пломбир, молоко", "price": 315, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Сингапурский Слинг", "description": "300 мл, безалкогольный джин, лимонный фреш, сироп гренадин, ананасовый сок", "price": 270, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Salty Dog", "description": "250 мл, безалкогольный джин, лимонный фреш, сахарный сироп, сок грейпфрут", "price": 270, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Негрони безалкогольный", "description": "150 мл, безалкогольный джин, безалкогольный биттер", "price": 270, "weight": "150 мл", "kbju": "", "photo": ""},
+    {"name": "Мохито безалкогольный", "description": "300 мл, безалкогольный ром, лимонный фреш, сахарный сироп, лайм, мята, содовая", "price": 270, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Ронго безалкогольный", "description": "300 мл, безалкогольный ром, лимонный фреш, сироп маракуйя, сок персик, сок ананас", "price": 270, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Пина Колада безалкогольная", "description": "300 мл, безалкогольный ром, ананас, кокосовые сливки", "price": 270, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Молочный коктейль Пикник", "description": "250 мл, с грецким орехом и изюмом", "price": 255, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Молочный коктейль Классика", "description": "250 мл, шоколадный, банановый, бананово-шоколадный или ванильный", "price": 255, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Молочный коктейль Классика XL", "description": "400 мл", "price": 325, "weight": "400 мл", "kbju": "", "photo": ""},
+    {"name": "Сок классика", "description": "250 мл, ананас, апельсин, яблоко, персик, грейпфрут, томат или вишня", "price": 95, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Свежевыжатый сок", "description": "200 мл, апельсин или грейпфрут", "price": 265, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Лимонад фирменный", "description": "350 мл, малина с мятой, яркая облепиха или сочный апельсин", "price": 170, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Лимонад фирменный большой", "description": "1000 мл", "price": 455, "weight": "1000 мл", "kbju": "", "photo": ""},
+    {"name": "Сезонный лимонад Киви-базилик", "description": "350 мл", "price": 170, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Кола на разлив", "description": "250 мл", "price": 90, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Coca-Cola", "description": "330 мл, в стекле", "price": 255, "weight": "330 мл", "kbju": "", "photo": ""},
+    {"name": "Bon Aqua", "description": "330 мл, в стекле", "price": 150, "weight": "330 мл", "kbju": "", "photo": ""}
   ],
   "🍸 Коктейли авторские": [
-    {
-      "name": "Эйприл",
-      "description": "250 мл, Whitley Neill Rhubarb Gin",
-      "price": 355,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Малиновый Твист",
-      "description": "190 мл, малина на джине",
-      "price": 355,
-      "weight": "190 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Глубина",
-      "description": "300 мл, Blue Curacao",
-      "price": 355,
-      "weight": "300 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Сарти Мартини",
-      "description": "150 мл, Sarti Aperitivo",
-      "price": 355,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Тиффани",
-      "description": "200 мл, настойка солёная карамель",
-      "price": 355,
-      "weight": "200 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Воин Дракона",
-      "description": "350 мл, водка, персиковый ликёр",
-      "price": 425,
-      "weight": "350 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Бабушкин Лонг",
-      "description": "350 мл, малина на джине, вишня на коньяке",
-      "price": 425,
-      "weight": "350 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Ронго",
-      "description": "350 мл, ром, сироп маракуйя",
-      "price": 425,
-      "weight": "350 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Мартин (сезонный)",
-      "description": "250 мл, Whitley Neill Quince",
-      "price": 355,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Майя (сезонный)",
-      "description": "250 мл, Sarti Aperitivo",
-      "price": 355,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Аврил (сезонный)",
-      "description": "250 мл, Pogues Irish Whiskey",
-      "price": 355,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Эйприл", "description": "250 мл, Whitley Neill Rhubarb Gin, лимонный фреш, сироп бузина, пена клюква-апельсин-мёд", "price": 355, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Малиновый Твист", "description": "190 мл, малина на джине, лимонный фреш, сахарный сироп, яичный белок", "price": 355, "weight": "190 мл", "kbju": "", "photo": ""},
+    {"name": "Глубина", "description": "300 мл, лимонная минту, ликёр Blue Curacao, лимонный фреш, лимонад лимон-лайм", "price": 355, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Сарти Мартини", "description": "150 мл, Sarti Aperitivo, лимонный фреш, сироп ваниль, игристое брют", "price": 355, "weight": "150 мл", "kbju": "", "photo": ""},
+    {"name": "Тиффани", "description": "200 мл, настойка солёная карамель, наш адвокат, сливки, карамельно-апельсиновая пена", "price": 355, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Воин Дракона", "description": "350 мл, водка, персиковый ликёр, лимонный фреш, малиновый сироп, сок грейпфрут", "price": 425, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Бабушкин Лонг", "description": "350 мл, малина на джине, вишня на коньяке, клюковка, смородина, ликёр Cassis, лимонный фреш, морс", "price": 425, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Ронго", "description": "350 мл, ром, сироп маракуйя, лимонный фреш, сок персик, сок ананас", "price": 425, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Мартин (сезонный)", "description": "250 мл, Whitley Neill Quince, лимонный фреш, сироп манго, пена улун-мята-апельсин", "price": 355, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Майя (сезонный)", "description": "250 мл, Sarti Aperitivo, лимонный фреш, сироп кокос, содовая", "price": 355, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Аврил (сезонный)", "description": "250 мл, Pogues Irish Whiskey, лимонный фреш, пюре киви-базилик, парфюм ревень", "price": 355, "weight": "250 мл", "kbju": "", "photo": ""}
   ],
   "🍹 Коктейли классика": [
-    {
-      "name": "Кайпиринья",
-      "description": "150 мл, Cachaca, лайм",
-      "price": 425,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Пина Колада",
-      "description": "300 мл, ром, ананас",
-      "price": 425,
-      "weight": "300 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Аристей",
-      "description": "150 мл, Berkshire Dandelion Gin",
-      "price": 425,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Ла-Манш",
-      "description": "150 мл, Pogues Irish Whiskey",
-      "price": 425,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Нью-Йорк Сауэр",
-      "description": "200 мл, Bankhall Sweet Mash",
-      "price": 425,
-      "weight": "200 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Irish Coffee",
-      "description": "190 мл, Pogues Irish Whiskey, эспрессо",
-      "price": 425,
-      "weight": "190 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Негрони Сбальято",
-      "description": "150 мл, Campari Bitter",
-      "price": 425,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Пенициллин",
-      "description": "150 мл, Pogues Irish Whiskey, Laphroaig",
-      "price": 475,
-      "weight": "150 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Aperol/Campari/Sarti Spritz",
-      "description": "из ассортимента",
-      "price": 375,
-      "weight": "",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Кайпиринья", "description": "150 мл, Cachaca, тростниковый сахар, лайм", "price": 425, "weight": "150 мл", "kbju": "", "photo": ""},
+    {"name": "Пина Колада", "description": "300 мл, ром, ананас, кокосовые сливки", "price": 425, "weight": "300 мл", "kbju": "", "photo": ""},
+    {"name": "Аристей", "description": "150 мл, Berkshire Dandelion Gin, лимонный фреш, Nocino, мёд", "price": 425, "weight": "150 мл", "kbju": "", "photo": ""},
+    {"name": "Ла-Манш", "description": "150 мл, Pogues Irish Whiskey, ликёр Cassis, Atxa Vermouth, биттер Peychauds", "price": 425, "weight": "150 мл", "kbju": "", "photo": ""},
+    {"name": "Нью-Йорк Сауэр", "description": "200 мл, Bankhall Sweet Mash, лимонный фреш, сахарный сироп, яичный белок, Tarapaca Мерло", "price": 425, "weight": "200 мл", "kbju": "", "photo": ""},
+    {"name": "Irish Coffee", "description": "190 мл, Pogues Irish Whiskey, двойной эспрессо, тростниковый сахар, сливки", "price": 425, "weight": "190 мл", "kbju": "", "photo": ""},
+    {"name": "Негрони Сбальято", "description": "150 мл, Campari Bitter, Atha Vermouth, игристое брют", "price": 425, "weight": "150 мл", "kbju": "", "photo": ""},
+    {"name": "Пенициллин", "description": "150 мл, Pogues Irish Whiskey, лимонный фреш, белок, сахарный сироп, Laphroaig", "price": 475, "weight": "150 мл", "kbju": "", "photo": ""},
+    {"name": "Aperol/Campari/Sarti Spritz", "description": "из ассортимента", "price": 375, "weight": "", "kbju": "", "photo": ""}
   ],
   "🥃 Виски": [
-    {
-      "name": "Johnnie Walker Red Label",
-      "description": "40 мл, шотландский",
-      "price": 285,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Ballantines Finest",
-      "description": "40 мл, шотландский",
-      "price": 325,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Loch Lomond",
-      "description": "40 мл, шотландский",
-      "price": 595,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Laphroaig",
-      "description": "40 мл, шотландский",
-      "price": 675,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Glenmorangie",
-      "description": "40 мл, шотландский",
-      "price": 675,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Jack Daniels",
-      "description": "40 мл, американский",
-      "price": 365,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Makers Mark",
-      "description": "40 мл, американский",
-      "price": 375,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "The Pogues",
-      "description": "40 мл, ирландский",
-      "price": 305,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Proper Twelve",
-      "description": "40 мл, ирландский",
-      "price": 425,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Bankhall Sweet Mash",
-      "description": "40 мл",
-      "price": 325,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Johnnie Walker Red Label", "description": "40 мл, шотландский", "price": 285, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "James Crees", "description": "40 мл, шотландский", "price": 295, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Ballantines Finest", "description": "40 мл, шотландский", "price": 325, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Aber Falls Madeira Cask", "description": "40 мл, шотландский", "price": 325, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Haran 8", "description": "40 мл, шотландский", "price": 475, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Loch Lomond", "description": "40 мл, шотландский", "price": 595, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Laphroaig", "description": "40 мл, шотландский", "price": 675, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Glenmorangie", "description": "40 мл, шотландский", "price": 675, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Jim Beam White Label", "description": "40 мл, американский", "price": 345, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Jack Daniels", "description": "40 мл, американский", "price": 365, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Makers Mark", "description": "40 мл, американский", "price": 375, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Wild Turkey 101", "description": "40 мл, американский", "price": 675, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "The Pogues", "description": "40 мл, ирландский", "price": 305, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Samuel Gelstons Pot Still", "description": "40 мл, ирландский", "price": 305, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Hinch Distillers Cut", "description": "40 мл, ирландский", "price": 305, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Peaky Blinder Irish Whiskey", "description": "40 мл, ирландский", "price": 305, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Proper Twelve", "description": "40 мл, ирландский", "price": 425, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Nestville", "description": "40 мл", "price": 295, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Bankhall Sweet Mash", "description": "40 мл", "price": 325, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Bellevoye Finition Grain Fin", "description": "40 мл", "price": 495, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Херес Tio Toto Cream", "description": "100 мл", "price": 455, "weight": "100 мл", "kbju": "", "photo": ""},
+    {"name": "Херес Tio Toto Fino", "description": "100 мл", "price": 455, "weight": "100 мл", "kbju": "", "photo": ""}
   ],
   "🍷 Вино": [
-    {
-      "name": "Cielo Bio Bio Bubbles",
-      "description": "125 мл / 750 мл, Италия",
-      "price": 345,
-      "weight": "125 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Cape Original Moscato",
-      "description": "125 мл / 750 мл, ЮАР, сладкое",
-      "price": 325,
-      "weight": "125 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Рислинг Sturmwolken",
-      "description": "125 мл / 750 мл, Германия",
-      "price": 325,
-      "weight": "125 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Совиньон Блан Arco Bay",
-      "description": "125 мл / 750 мл, Новая Зеландия",
-      "price": 475,
-      "weight": "125 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Tarapaca Merlo",
-      "description": "125 мл / 750 мл, Чили",
-      "price": 315,
-      "weight": "125 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Гарнача Celebrities",
-      "description": "125 мл / 750 мл, Испания",
-      "price": 315,
-      "weight": "125 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Lakky Shiraz",
-      "description": "125 мл / 750 мл, Австралия",
-      "price": 315,
-      "weight": "125 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Порто (крепл.)",
-      "description": "100 мл",
-      "price": 365,
-      "weight": "100 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Cielo Bio Bio Bubbles", "description": "125 мл / 750 мл, Италия, Сицилия", "price": 345, "weight": "125 мл", "kbju": "", "photo": ""},
+    {"name": "Cape Original Moscato", "description": "125 мл / 750 мл, ЮАР, сладкое", "price": 325, "weight": "125 мл", "kbju": "", "photo": ""},
+    {"name": "Рислинг Sturmwolken", "description": "125 мл / 750 мл, Германия", "price": 325, "weight": "125 мл", "kbju": "", "photo": ""},
+    {"name": "Совиньон Блан Arco Bay", "description": "125 мл / 750 мл, Новая Зеландия", "price": 475, "weight": "125 мл", "kbju": "", "photo": ""},
+    {"name": "Tarapaca Merlo", "description": "125 мл / 750 мл, Чили", "price": 315, "weight": "125 мл", "kbju": "", "photo": ""},
+    {"name": "Гарнача Celebrities", "description": "125 мл / 750 мл, Испания", "price": 315, "weight": "125 мл", "kbju": "", "photo": ""},
+    {"name": "Lakky Shiraz", "description": "125 мл / 750 мл, Австралия", "price": 315, "weight": "125 мл", "kbju": "", "photo": ""},
+    {"name": "Порто (крепл.)", "description": "100 мл", "price": 365, "weight": "100 мл", "kbju": "", "photo": ""}
   ],
   "🍺 Пиво": [
-    {
-      "name": "Крушовице (в стекле)",
-      "description": "450 мл, 4.8%",
-      "price": 225,
-      "weight": "450 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Крушовице Безалкогольное",
-      "description": "330 мл",
-      "price": 195,
-      "weight": "330 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Крафт (банка или бутылка)",
-      "description": "450 мл",
-      "price": 450,
-      "weight": "450 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Oklers Weizen разлив 250 мл",
-      "description": "4.5%",
-      "price": 235,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Oklers Weizen разлив 400 мл",
-      "description": "4.5%",
-      "price": 365,
-      "weight": "400 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Pilsner Murquell разлив 250 мл",
-      "description": "4.8%",
-      "price": 235,
-      "weight": "250 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Pilsner Murquell разлив 400 мл",
-      "description": "4.8%",
-      "price": 365,
-      "weight": "400 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Крушовице (в стекле)", "description": "450 мл, Пл. 11%, Алк. 4.8%", "price": 225, "weight": "450 мл", "kbju": "", "photo": ""},
+    {"name": "Крушовице Безалкогольное", "description": "330 мл", "price": 195, "weight": "330 мл", "kbju": "", "photo": ""},
+    {"name": "Крафт (банка или бутылка)", "description": "450 мл", "price": 450, "weight": "450 мл", "kbju": "", "photo": ""},
+    {"name": "Oklers Weizen разлив 250 мл", "description": "Пл. 11%, Алк. 4.5%", "price": 235, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Oklers Weizen разлив 400 мл", "description": "Пл. 11%, Алк. 4.5%", "price": 365, "weight": "400 мл", "kbju": "", "photo": ""},
+    {"name": "Pilsner Murquell разлив 250 мл", "description": "Пл. 12%, Алк. 4.8%", "price": 235, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Pilsner Murquell разлив 400 мл", "description": "Пл. 12%, Алк. 4.8%", "price": 365, "weight": "400 мл", "kbju": "", "photo": ""}
   ],
   "🥃 Водка": [
-    {
-      "name": "Whitley Artisanal Vodka Gold",
-      "description": "40 мл",
-      "price": 155,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Чайковский",
-      "description": "40 мл",
-      "price": 190,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Белуга Нобл",
-      "description": "40 мл",
-      "price": 230,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Whitley Artisanal Vodka Gold", "description": "40 мл", "price": 155, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Чайковский", "description": "40 мл", "price": 190, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Белуга Нобл", "description": "40 мл", "price": 230, "weight": "40 мл", "kbju": "", "photo": ""}
   ],
   "🍸 Джин": [
-    {
-      "name": "Whitley Neill Dry Gin",
-      "description": "40 мл",
-      "price": 265,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Whitley Neill Rhubarb&Ginger",
-      "description": "40 мл",
-      "price": 265,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Bulldog",
-      "description": "40 мл",
-      "price": 315,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Drumshanbo Gunpowder Irish Gin",
-      "description": "40 мл",
-      "price": 365,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Mare Gin",
-      "description": "40 мл",
-      "price": 475,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Whitley Neill Dry Gin", "description": "40 мл", "price": 265, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Whitley Neill Rhubarb&Ginger", "description": "40 мл", "price": 265, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Bulldog", "description": "40 мл", "price": 315, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Drumshanbo Gunpowder Irish Gin", "description": "40 мл", "price": 365, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Mare Gin", "description": "40 мл", "price": 475, "weight": "40 мл", "kbju": "", "photo": ""}
   ],
   "🥃 Ром и кашаса": [
-    {
-      "name": "Dead Mans Finger Black",
-      "description": "40 мл",
-      "price": 295,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Nusa Cana Tropical Island",
-      "description": "40 мл",
-      "price": 355,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Matusalem Solera 7",
-      "description": "40 мл",
-      "price": 395,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Diplomatico Mantuano",
-      "description": "40 мл",
-      "price": 395,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Takamaka Extra Noir",
-      "description": "40 мл",
-      "price": 395,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Cachaca",
-      "description": "40 мл",
-      "price": 325,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Dead Mans Finger Black", "description": "40 мл", "price": 295, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Nusa Cana Tropical Island", "description": "40 мл", "price": 355, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Matusalem Solera 7", "description": "40 мл", "price": 395, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Diplomatico Mantuano", "description": "40 мл", "price": 395, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Takamaka Extra Noir", "description": "40 мл", "price": 395, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Cachaca", "description": "40 мл", "price": 325, "weight": "40 мл", "kbju": "", "photo": ""}
   ],
   "🥃 Коньяк и бренди": [
-    {
-      "name": "Кизляр 3*",
-      "description": "40 мл",
-      "price": 230,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Арарат 3*",
-      "description": "40 мл",
-      "price": 245,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Vecchia Romagna",
-      "description": "40 мл",
-      "price": 285,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Calvados VSOP",
-      "description": "40 мл",
-      "price": 465,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Camus VS",
-      "description": "40 мл",
-      "price": 490,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Camus VSOP",
-      "description": "40 мл",
-      "price": 645,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Кизляр 3*", "description": "40 мл", "price": 230, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Арарат 3*", "description": "40 мл", "price": 245, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Vecchia Romagna", "description": "40 мл", "price": 285, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Calvados VSOP", "description": "40 мл", "price": 465, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Camus VS", "description": "40 мл", "price": 490, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Camus VSOP", "description": "40 мл", "price": 645, "weight": "40 мл", "kbju": "", "photo": ""}
   ],
   "🌵 Текила и мескаль": [
-    {
-      "name": "Dead Mans Fingers Reposado",
-      "description": "40 мл",
-      "price": 295,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Cuerno de Toro Blanco",
-      "description": "40 мл",
-      "price": 355,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Cuerno de Toro Reposado",
-      "description": "40 мл",
-      "price": 375,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Raicilla Estancia",
-      "description": "40 мл, мескаль",
-      "price": 655,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Dead Mans Fingers Reposado", "description": "40 мл", "price": 295, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Cuerno de Toro Blanco", "description": "40 мл", "price": 355, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Cuerno de Toro Reposado", "description": "40 мл", "price": 375, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Raicilla Estancia", "description": "40 мл, мескаль", "price": 655, "weight": "40 мл", "kbju": "", "photo": ""}
   ],
   "🍶 Ликёры и вермуты": [
-    {
-      "name": "Jagermeister",
-      "description": "40 мл",
-      "price": 285,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Sambuca",
-      "description": "40 мл",
-      "price": 265,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Bols (в ассортименте)",
-      "description": "40 мл",
-      "price": 285,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Atxa Vermouth",
-      "description": "40 мл",
-      "price": 150,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Aperol Aperitivo",
-      "description": "40 мл",
-      "price": 245,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Campari Bitter",
-      "description": "40 мл",
-      "price": 265,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Fernet Branca",
-      "description": "40 мл",
-      "price": 275,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Amaro Montenegro",
-      "description": "40 мл",
-      "price": 295,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Jagermeister", "description": "40 мл", "price": 285, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Sambuca", "description": "40 мл", "price": 265, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Berkshire Sloe Gin", "description": "40 мл", "price": 265, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Bols (в ассортименте)", "description": "40 мл", "price": 285, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Atxa Vermouth", "description": "40 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Carpano Dry", "description": "40 мл", "price": 160, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Aperol Aperitivo", "description": "40 мл", "price": 245, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Martini Riserva Bitter", "description": "40 мл", "price": 275, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Cynar Bitter", "description": "40 мл", "price": 245, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Campari Bitter", "description": "40 мл", "price": 265, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Fernet Branca", "description": "40 мл", "price": 275, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Branca Menta", "description": "40 мл", "price": 275, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Amaro Montenegro", "description": "40 мл", "price": 295, "weight": "40 мл", "kbju": "", "photo": ""}
   ],
   "🥂 Шоты и лонги": [
-    {
-      "name": "Шот (40 мл)",
-      "description": "из нашего ассортимента",
-      "price": 150,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Лонг (200 мл)",
-      "description": "микс на выбор",
-      "price": 295,
-      "weight": "200 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Медуза", "description": "50 мл, самбука, ликёр Triple Sec, ром, ликёр Blue Curacao, Baileys", "price": 345, "weight": "50 мл", "kbju": "", "photo": ""},
+    {"name": "В-52", "description": "50 мл, Baileys, кофейный ликёр, ликёр Triple Sec", "price": 345, "weight": "50 мл", "kbju": "", "photo": ""},
+    {"name": "Скользкий сосок", "description": "50 мл, самбука, Baileys, сироп гренадин", "price": 345, "weight": "50 мл", "kbju": "", "photo": ""},
+    {"name": "Кровоизлияние в мозг", "description": "50 мл, персиковый ликёр, Baileys, сироп гренадин", "price": 325, "weight": "50 мл", "kbju": "", "photo": ""},
+    {"name": "Боярский", "description": "50 мл, водка, сироп гренадин, табаско", "price": 235, "weight": "50 мл", "kbju": "", "photo": ""},
+    {"name": "Скорострел", "description": "50 мл, кофейный ликёр, настойка солёная карамель, взбитые сливки", "price": 345, "weight": "50 мл", "kbju": "", "photo": ""},
+    {"name": "Ангельские сиськи", "description": "50 мл, наш адвокат, самбука, вишня мараскино", "price": 265, "weight": "50 мл", "kbju": "", "photo": ""},
+    {"name": "Лонг Айленд Айс Ти", "description": "350 мл, ром, водка, джин, текила, ликёр Triple Sec, лимонный фреш, кола", "price": 550, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Май Тай", "description": "350 мл, белый ром, тёмный ром, ликёр Triple Sec, сироп миндаль, лимонный фреш, сок апельсин, сок ананас", "price": 550, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Аи-99", "description": "350 мл, ром, водка, джин, текила, ликёр Triple Sec, лимонный фреш, сироп Blue Curacao, лимонад лимон-лайм", "price": 550, "weight": "350 мл", "kbju": "", "photo": ""},
+    {"name": "Джин-Тоник", "description": "250 мл, манго-папайя, ежевика или классика", "price": 245, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Ром-Кола", "description": "250 мл", "price": 265, "weight": "250 мл", "kbju": "", "photo": ""},
+    {"name": "Виски-Кола", "description": "250 мл", "price": 265, "weight": "250 мл", "kbju": "", "photo": ""}
   ],
   "🌶 Настойки Sweet Pepper": [
-    {
-      "name": "Ярославская Черника",
-      "description": "40 мл / 500 мл",
-      "price": 150,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Солёная Карамель",
-      "description": "40 мл / 500 мл",
-      "price": 150,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Малина на Джине",
-      "description": "40 мл / 500 мл",
-      "price": 190,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Вишня на коньяке",
-      "description": "40 мл / 500 мл",
-      "price": 190,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Хреновуха",
-      "description": "40 мл / 500 мл",
-      "price": 150,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    },
-    {
-      "name": "Наш Адвокат",
-      "description": "40 мл",
-      "price": 150,
-      "weight": "40 мл",
-      "kbju": "",
-      "photo": ""
-    }
+    {"name": "Абрикосовая", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Легендарная Смородина", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Облепиховая", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Клюковка", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Ярославская Черника", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Лимонная минту", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Солёная Карамель", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Чертовка", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Хреновуха", "description": "40 мл / 500 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Наш Адвокат", "description": "40 мл", "price": 150, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Малина на Джине", "description": "40 мл / 500 мл", "price": 190, "weight": "40 мл", "kbju": "", "photo": ""},
+    {"name": "Вишня на коньяке", "description": "40 мл / 500 мл", "price": 190, "weight": "40 мл", "kbju": "", "photo": ""}
   ]
 }
