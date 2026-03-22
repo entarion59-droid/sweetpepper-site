@@ -11,17 +11,17 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "sweetpepper_secret_2025")
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "pepper2025")
+app.secret_key = os.environ.get("SECRET_KEY")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "gif"}
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:vFRwTXvxZWlPlriIkChyNDnbgNxpsRSD@interchange.proxy.rlwy.net:24304/railway")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 cloudinary.config(
-    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME", "dqxc3rfml"),
-    api_key=os.environ.get("CLOUDINARY_API_KEY", "735795974666715"),
-    api_secret=os.environ.get("CLOUDINARY_API_SECRET", "CvGvLny8_D8HPdGTv2C1oZO28sU")
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET")
 )
 
 # ─────────────────────────────────────────────
@@ -33,7 +33,6 @@ def get_db():
     return conn
 
 def init_db():
-    """Создаём таблицы если не существуют и заполняем начальными данными."""
     conn = get_db()
     cur = conn.cursor()
 
