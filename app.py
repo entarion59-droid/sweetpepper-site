@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, render_template, jsonify, request, session, redirect, url_for
+from flask import Flask, render_template, jsonify, request, session, redirect, url_for, Response
 import json
 import os
 from datetime import datetime, timedelta
@@ -8,6 +8,7 @@ from functools import wraps
 import cloudinary
 import cloudinary.uploader
 import psycopg2
+from psycopg2 import pool
 from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
@@ -25,12 +26,18 @@ cloudinary.config(
 )
 
 # ─────────────────────────────────────────────
-# DATABASE
+# DATABASE POOL
 # ─────────────────────────────────────────────
 
+db_pool = pool.ThreadedConnectionPool(1, 10, DATABASE_URL)
+
 def get_db():
-    conn = psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
+    conn = db_pool.getconn()
+    conn.cursor_factory = RealDictCursor
     return conn
+
+def release_db(conn):
+    db_pool.putconn(conn)
 
 def init_db():
     conn = get_db()
@@ -114,7 +121,7 @@ def init_db():
 
     conn.commit()
     cur.close()
-    conn.close()
+    release_db(conn)
 
 def db_get(key):
     conn = get_db()
@@ -122,7 +129,7 @@ def db_get(key):
     cur.execute("SELECT value FROM settings WHERE key = %s", (key,))
     row = cur.fetchone()
     cur.close()
-    conn.close()
+    release_db(conn)
     return json.loads(row["value"]) if row else None
 
 def db_set(key, value):
@@ -134,7 +141,7 @@ def db_set(key, value):
     """, (key, json.dumps(value, ensure_ascii=False)))
     conn.commit()
     cur.close()
-    conn.close()
+    release_db(conn)
 
 # ─────────────────────────────────────────────
 # FALLBACK MENU
@@ -161,7 +168,16 @@ FALLBACK_MENU = {
 # АНАЛИТИКА
 # ─────────────────────────────────────────────
 
+BOT_AGENTS = ["bot", "spider", "crawler", "slurp", "baiduspider", "yandex", "googlebot",
+              "bingbot", "duckduckbot", "facebookexternalhit", "curl", "wget", "python-requests"]
+
+def is_bot():
+    ua = request.headers.get("User-Agent", "").lower()
+    return any(b in ua for b in BOT_AGENTS)
+
 def track_page_view():
+    if is_bot():
+        return
     try:
         conn = get_db()
         cur = conn.cursor()
@@ -171,7 +187,7 @@ def track_page_view():
         """)
         conn.commit()
         cur.close()
-        conn.close()
+        release_db(conn)
     except Exception:
         pass
 
@@ -185,7 +201,7 @@ def track_dish_view(category, dish_name):
         """, (category, dish_name))
         conn.commit()
         cur.close()
-        conn.close()
+        release_db(conn)
     except Exception:
         pass
 
@@ -220,7 +236,7 @@ def get_analytics():
         month = row["sum"] if row and row["sum"] else 0
 
         cur.close()
-        conn.close()
+        release_db(conn)
         return {
             "views_by_day": views_by_day,
             "top_dishes": top_dishes,
@@ -343,6 +359,23 @@ def lunch():
     info = load_cafe_info()
     lunch_data = load_lunch()
     return render_template("lunch.html", info=info, lunch=lunch_data)
+
+@app.route("/robots.txt")
+def robots():
+    return Response(
+        "User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: https://web-production-011d1.up.railway.app/sitemap.xml\n",
+        mimetype="text/plain"
+    )
+
+@app.route("/sitemap.xml")
+def sitemap():
+    base = "https://web-production-011d1.up.railway.app"
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    xml += f'  <url><loc>{base}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>\n'
+    xml += f'  <url><loc>{base}/lunch</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>\n'
+    xml += '</urlset>'
+    return Response(xml, mimetype="application/xml")
 
 @app.route("/api/track_dish", methods=["POST"])
 def api_track_dish():
