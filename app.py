@@ -11,17 +11,17 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY")
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
+app.secret_key = os.environ.get("SECRET_KEY", "sweetpepper_secret_2025")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "pepper2025")
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "gif"}
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:vFRwTXvxZWlPlriIkChyNDnbgNxpsRSD@interchange.proxy.rlwy.net:24304/railway")
 
 cloudinary.config(
-    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    api_key=os.environ.get("CLOUDINARY_API_KEY"),
-    api_secret=os.environ.get("CLOUDINARY_API_SECRET")
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME", "dqxc3rfml"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY", "735795974666715"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET", "CvGvLny8_D8HPdGTv2C1oZO28sU")
 )
 
 # ─────────────────────────────────────────────
@@ -37,7 +37,6 @@ def init_db():
     conn = get_db()
     cur = conn.cursor()
 
-    # Таблица настроек (меню, ланч, мероприятия, инфо)
     cur.execute("""
         CREATE TABLE IF NOT EXISTS settings (
             key TEXT PRIMARY KEY,
@@ -45,7 +44,6 @@ def init_db():
         )
     """)
 
-    # Проверяем есть ли данные
     cur.execute("SELECT key FROM settings WHERE key = 'menu'")
     if not cur.fetchone():
         menu_data = {}
@@ -96,7 +94,6 @@ def init_db():
         cur.execute("INSERT INTO settings (key, value) VALUES (%s, %s)",
                     ("cafe_info", json.dumps(info_data, ensure_ascii=False)))
 
-    # Таблица просмотров страниц
     cur.execute("""
         CREATE TABLE IF NOT EXISTS page_views (
             id SERIAL PRIMARY KEY,
@@ -106,7 +103,6 @@ def init_db():
         )
     """)
 
-    # Таблица просмотров блюд
     cur.execute("""
         CREATE TABLE IF NOT EXISTS dish_views (
             id SERIAL PRIMARY KEY,
