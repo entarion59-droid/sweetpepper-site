@@ -454,7 +454,19 @@ nav.scrolled {
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+.modal-taste {
+  font-size: 1rem;
+  color: var(--dark);
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg3);
+  border-left: 3px solid var(--red);
+  border-radius: 0 8px 8px 0;
 }
 .modal-details {
   display: grid;
@@ -873,7 +885,19 @@ function openDish(cat, idx) {
   }
   document.getElementById('modalCat').textContent = cat;
   document.getElementById('modalName').textContent = dish.name;
-  document.getElementById('modalDesc').textContent = dish.description || '';
+
+  // Для коктейлей description = вкусовое описание (содержит точку с большой буквы)
+  // Для еды description = состав/вес
+  const cocktailCats = ['🍸 Коктейли авторские', '🍹 Коктейли классика'];
+  const isCocktail = cocktailCats.includes(cat);
+
+  if (isCocktail && dish.description) {
+    document.getElementById('modalDesc').innerHTML =
+      `<div class="modal-taste">${dish.description}</div>`;
+  } else {
+    document.getElementById('modalDesc').textContent = dish.description || '';
+  }
+
   let details = '';
   if (dish.weight) details += `<div class="modal-detail"><div class="modal-detail-label">Выход</div><div class="modal-detail-value">${dish.weight}</div></div>`;
   if (dish.kbju) details += `<div class="modal-detail"><div class="modal-detail-label">КБЖУ</div><div class="modal-detail-value">${dish.kbju}</div></div>`;
