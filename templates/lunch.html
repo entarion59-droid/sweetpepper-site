@@ -164,6 +164,7 @@ nav {
 .dish-footer { display: flex; justify-content: space-between; align-items: center; }
 .dish-price { font-size: 1.15rem; font-weight: 700; color: var(--red); }
 .dish-weight { font-size: 0.72rem; color: var(--text-muted); background: var(--bg3); padding: 0.2rem 0.5rem; border-radius: 100px; }
+.dish-kbju { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
 
 /* MODAL */
 .modal-overlay {
@@ -295,6 +296,7 @@ footer a { color: var(--red); text-decoration: none; }
         <div class="dish-price">{{ dish.price }} ₽</div>
         {% if dish.weight %}<div class="dish-weight">{{ dish.weight }}</div>{% endif %}
       </div>
+      {% if dish.kbju %}<div class="dish-kbju">{{ dish.kbju }}</div>{% endif %}
     </div>
   </div>
   {% endfor %}
@@ -353,8 +355,9 @@ function openDish(cat, idx) {
   document.getElementById('modalDesc').textContent = dish.description || '';
   let details = '';
   if (dish.weight) details += `<div class="modal-detail"><div class="modal-detail-label">Выход</div><div class="modal-detail-value">${dish.weight}</div></div>`;
+  if (dish.kbju) details += `<div class="modal-detail" style="grid-column:1/-1"><div class="modal-detail-label">КБЖУ</div><div class="modal-detail-value" style="font-size:0.82rem">${dish.kbju}</div></div>`;
   document.getElementById('modalDetails').innerHTML = details;
-  document.getElementById('modalDetails').style.display = dish.weight ? 'grid' : 'none';
+  document.getElementById('modalDetails').style.display = (dish.weight || dish.kbju) ? 'grid' : 'none';
   document.getElementById('modalPrice').innerHTML = `${dish.price} <span>₽</span>`;
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
