@@ -634,12 +634,50 @@ def admin_delete_lunch_dish():
         save_lunch(lunch)
     return jsonify({"ok": True})
 
+FALLBACK_LUNCH = {
+    "Весенние хиты": [
+        {"name": "Буррито", "description": "", "price": 265, "weight": "", "kbju": "Б:16.5 · Ж:18.2 · У:28.4 · 339 ккал", "photo": ""},
+        {"name": "Ризотто с грибами", "description": "", "price": 285, "weight": "", "kbju": "Б:21.3 · Ж:17.4 · У:41.1 · 405 ккал", "photo": ""},
+    ],
+    "Салаты": [
+        {"name": "Кобб Салат", "description": "С куриной грудкой, беконом и фирменным соусом или с моцареллой, авокадо и брокколи", "price": 285, "weight": "", "kbju": "Б:14.0 · Ж:31.4 · У:2.7 · 353 ккал", "photo": ""},
+        {"name": "Классический Цезарь", "description": "С цыплёнком, гренками, салатом айсберг и фирменным соусом", "price": 245, "weight": "", "kbju": "Б:12.9 · Ж:24.9 · У:6.2 · 300 ккал", "photo": ""},
+        {"name": "Грузинский салат", "description": "С моцареллой и свежими овощами в сливочно-острой заправке с грецким орехом", "price": 255, "weight": "", "kbju": "Б:5.1 · Ж:31.0 · У:7.0 · 327 ккал", "photo": ""},
+    ],
+    "Ланч-хиты": [
+        {"name": "Кесадилья", "description": "С цыплёнком и сыром или двойной сыр", "price": 265, "weight": "", "kbju": "Б:23.3 · Ж:13.7 · У:3.1 · 229 ккал", "photo": ""},
+        {"name": "Фирменная Брокколи", "description": "В сухарях с пармезаном", "price": 190, "weight": "", "kbju": "Б:8.9 · Ж:17.1 · У:20.5 · 272 ккал", "photo": ""},
+        {"name": "Цветная капуста с чили и мёдом", "description": "", "price": 180, "weight": "", "kbju": "Б:8.4 · Ж:1.6 · У:49.1 · 244 ккал", "photo": ""},
+        {"name": "Паста с курицей", "description": "Фарфалле с грибами в сливочном соусе", "price": 225, "weight": "", "kbju": "Б:21.3 · Ж:17.4 · У:41.1 · 405 ккал", "photo": ""},
+        {"name": "Морковные оладьи", "description": "С карри и семечками", "price": 185, "weight": "", "kbju": "Б:4.2 · Ж:8.5 · У:22.3 · 181 ккал", "photo": ""},
+    ],
+    "На первое": [
+        {"name": "Борщ", "description": "Классика жанра с чесночным тостом и салом на гарнир", "price": 225, "weight": "350 г", "kbju": "Б:10.0 · Ж:22.0 · У:18.1 · 311 ккал", "photo": ""},
+        {"name": "Тыквенный суп", "description": "Сливочный с цыплёнком или Веджи", "price": 195, "weight": "300 г", "kbju": "Б:14.0 · Ж:46.9 · У:21.3 · 563 ккал", "photo": ""},
+        {"name": "Весенний супчик дня", "description": "Чорба, Сырный или Солянка", "price": 235, "weight": "250 г", "kbju": "Чорба: Б:12.4 · Ж:8.6 · У:18.2 · 201 ккал | Сырный: Б:7.8 · Ж:9.2 · У:14.5 · 171 ккал", "photo": ""},
+    ],
+    "Сендвич-сеты": [
+        {"name": "С цыплёнком", "description": "И картошкой фри", "price": 335, "weight": "", "kbju": "Б:7.7 · Ж:56.1 · У:19.1 · 602 ккал", "photo": ""},
+        {"name": "С индейкой", "description": "И картофельными дольками", "price": 345, "weight": "", "kbju": "Б:7.9 · Ж:29.9 · У:31.3 · 425 ккал", "photo": ""},
+        {"name": "Бейгл с котлетой", "description": "И картошкой по-ярославски", "price": 355, "weight": "", "kbju": "Б:16.2 · Ж:81.7 · У:80.3 · 1121 ккал", "photo": ""},
+    ],
+    "Десерты": [
+        {"name": "Фирменный штрудель", "description": "Яблочный с орехами и грушами", "price": 150, "weight": "", "kbju": "Б:2.1 · Ж:7.6 · У:15.4 · 138 ккал", "photo": ""},
+        {"name": "Малиновый Наполеон", "description": "", "price": 85, "weight": "", "kbju": "Б:0.6 · Ж:1.6 · У:5.6 · 39 ккал", "photo": ""},
+        {"name": "Ягодный Коржик", "description": "", "price": 70, "weight": "", "kbju": "", "photo": ""},
+    ],
+}
+
 @app.route("/admin/reload_menu", methods=["POST"])
 @admin_required
 def admin_reload_menu():
     try:
-        with open("menu.json", "r", encoding="utf-8") as f:
-            new_menu = json.load(f)
+        # Сначала пробуем файл, если Railway его не найдёт — используем FALLBACK_MENU
+        try:
+            with open("menu.json", "r", encoding="utf-8") as f:
+                new_menu = json.load(f)
+        except Exception:
+            new_menu = FALLBACK_MENU
         current_menu = load_menu()
         for cat, dishes in new_menu.items():
             if cat in current_menu:
@@ -650,6 +688,30 @@ def admin_reload_menu():
                             break
         db_set("menu", new_menu)
         return jsonify({"ok": True, "message": "Меню обновлено, фото сохранены!"})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)})
+
+@app.route("/admin/reload_lunch", methods=["POST"])
+@admin_required
+def admin_reload_lunch():
+    try:
+        # Сначала пробуем файл, если Railway его не найдёт — используем FALLBACK_LUNCH
+        try:
+            with open("lunch.json", "r", encoding="utf-8") as f:
+                new_lunch = json.load(f)
+        except Exception:
+            new_lunch = FALLBACK_LUNCH
+        current_lunch = load_lunch()
+        # Сохраняем фото
+        for cat, dishes in new_lunch.items():
+            if cat in current_lunch:
+                for dish in dishes:
+                    for current_dish in current_lunch[cat]:
+                        if current_dish["name"] == dish["name"] and current_dish.get("photo"):
+                            dish["photo"] = current_dish["photo"]
+                            break
+        db_set("lunch", new_lunch)
+        return jsonify({"ok": True, "message": "Ланч обновлён, фото сохранены!"})
     except Exception as e:
         return jsonify({"ok": False, "error": str(e)})
 
